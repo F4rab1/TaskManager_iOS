@@ -11,4 +11,5 @@ struct CalendarDay {
     let month: String
     let day: String
     let weekDay: String
+    let formatted: String
 }

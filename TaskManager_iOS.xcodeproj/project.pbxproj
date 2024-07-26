@@ -14,6 +14,8 @@
 		D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D232C540E5E004C65C6 /* BetterSnappingLayout.swift */; };
 		D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D272C540F1E004C65C6 /* CalendarDayCell.swift */; };
 		D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2A2C542D63004C65C6 /* CalendarDay.swift */; };
+		D3008D2E2C543537004C65C6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2D2C543537004C65C6 /* APIService.swift */; };
+		D3008D302C54359C004C65C6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2F2C54359C004C65C6 /* Task.swift */; };
 		D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2202C51475800886CE4 /* AppDelegate.swift */; };
 		D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2222C51475800886CE4 /* SceneDelegate.swift */; };
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
@@ -32,6 +34,8 @@
 		D3008D232C540E5E004C65C6 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		D3008D272C540F1E004C65C6 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		D3008D2A2C542D63004C65C6 /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
+		D3008D2D2C543537004C65C6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		D3008D2F2C54359C004C65C6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30FB2202C51475800886CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30FB2222C51475800886CE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +81,17 @@
 			isa = PBXGroup;
 			children = (
 				D3008D2A2C542D63004C65C6 /* CalendarDay.swift */,
+				D3008D2F2C54359C004C65C6 /* Task.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D3008D2C2C543412004C65C6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D3008D2D2C543537004C65C6 /* APIService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		D30FB2142C51475800886CE4 = {
@@ -100,6 +113,7 @@
 		D30FB21F2C51475800886CE4 /* TaskManager_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D3008D2C2C543412004C65C6 /* Service */,
 				D3008D292C542D4F004C65C6 /* Models */,
 				D3008D252C540EFB004C65C6 /* Views */,
 				D3B487F82C5269A600CDC2D3 /* Controllers */,
@@ -243,7 +257,9 @@
 				D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */,
 				D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */,
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
+				D3008D302C54359C004C65C6 /* Task.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
+				D3008D2E2C543537004C65C6 /* APIService.swift in Sources */,
 				D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */,
 				D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */,
 				D3008D1B2C5402AB004C65C6 /* BaseListController.swift in Sources */,

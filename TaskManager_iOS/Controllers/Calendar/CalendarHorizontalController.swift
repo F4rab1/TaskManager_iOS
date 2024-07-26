@@ -68,6 +68,8 @@ func generateCalendarDays(startingFrom startDate: Date, numberOfDays: Int = 14) 
     var calendar = Calendar.current
     calendar.locale = Locale(identifier: "en_US")
     var days: [CalendarDay] = []
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
     
     for offset in 0..<numberOfDays {
         if let dayDate = calendar.date(byAdding: .day, value: offset, to: startDate) {
@@ -76,8 +78,9 @@ func generateCalendarDays(startingFrom startDate: Date, numberOfDays: Int = 14) 
             let month = String(calendar.monthSymbols[components.month! - 1].prefix(3))
             let dayString = String(components.day!)
             let weekDay = String(calendar.weekdaySymbols[components.weekday! - 1].prefix(3))
+            let formattedDate = dateFormatter.string(from: dayDate)
             
-            let calendarDay = CalendarDay(month: month, day: dayString, weekDay: weekDay)
+            let calendarDay = CalendarDay(month: month, day: dayString, weekDay: weekDay, formatted: formattedDate)
             days.append(calendarDay)
         }
     }
