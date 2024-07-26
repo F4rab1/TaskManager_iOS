@@ -10,6 +10,14 @@ import SnapKit
 
 class CalendarDayCell: UICollectionViewCell {
     
+    var day: CalendarDay! {
+        didSet {
+            monthLabel.text = day.month
+            dayLabel.text = day.day
+            weekLabel.text = day.weekDay
+        }
+    }
+    
     let monthLabel: UILabel = {
         let label = UILabel()
         label.text = "Feb"

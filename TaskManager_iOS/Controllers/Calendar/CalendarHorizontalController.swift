@@ -11,10 +11,15 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
     
     let dayCellId = "DayCell"
     private var selectedIndexPath: IndexPath? = IndexPath(item: 0, section: 0)
+    private var calendarDays: [CalendarDay] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .yellow
+        
+        let today = Date()
+        calendarDays = generateCalendarDays(startingFrom: today)
+        print(calendarDays)
         
         collectionView.register(CalendarDayCell.self, forCellWithReuseIdentifier: dayCellId)
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -25,11 +30,12 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 13
+        return 14
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dayCellId, for: indexPath) as! CalendarDayCell
+        cell.day = calendarDays[indexPath.item]
         
         if indexPath == selectedIndexPath {
             cell.configureForSelectedState()
@@ -56,4 +62,25 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
         selectedIndexPath = indexPath
     }
     
+}
+
+func generateCalendarDays(startingFrom startDate: Date, numberOfDays: Int = 14) -> [CalendarDay] {
+    var calendar = Calendar.current
+    calendar.locale = Locale(identifier: "en_US")
+    var days: [CalendarDay] = []
+    
+    for offset in 0..<numberOfDays {
+        if let dayDate = calendar.date(byAdding: .day, value: offset, to: startDate) {
+            let components = calendar.dateComponents([.year, .month, .day, .weekday], from: dayDate)
+            
+            let month = String(calendar.monthSymbols[components.month! - 1].prefix(3))
+            let dayString = String(components.day!)
+            let weekDay = String(calendar.weekdaySymbols[components.weekday! - 1].prefix(3))
+            
+            let calendarDay = CalendarDay(month: month, day: dayString, weekDay: weekDay)
+            days.append(calendarDay)
+        }
+    }
+    
+    return days
 }
