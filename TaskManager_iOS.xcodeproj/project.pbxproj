@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3008D1B2C5402AB004C65C6 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D1A2C5402AB004C65C6 /* BaseListController.swift */; };
+		D3008D1D2C540D7F004C65C6 /* CalendarHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D1C2C540D7F004C65C6 /* CalendarHorizontalController.swift */; };
+		D3008D202C540DE1004C65C6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3008D1F2C540DE1004C65C6 /* SnapKit */; };
+		D3008D222C540E3F004C65C6 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D212C540E3F004C65C6 /* HorizontalSnappingController.swift */; };
+		D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D232C540E5E004C65C6 /* BetterSnappingLayout.swift */; };
+		D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D272C540F1E004C65C6 /* CalendarDayCell.swift */; };
 		D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2202C51475800886CE4 /* AppDelegate.swift */; };
 		D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2222C51475800886CE4 /* SceneDelegate.swift */; };
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
@@ -19,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D3008D1A2C5402AB004C65C6 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
+		D3008D1C2C540D7F004C65C6 /* CalendarHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHorizontalController.swift; sourceTree = "<group>"; };
+		D3008D212C540E3F004C65C6 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
+		D3008D232C540E5E004C65C6 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
+		D3008D272C540F1E004C65C6 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30FB2202C51475800886CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30FB2222C51475800886CE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,12 +48,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3008D202C540DE1004C65C6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3008D252C540EFB004C65C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3008D262C540F08004C65C6 /* Calendar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3008D262C540F08004C65C6 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				D3008D272C540F1E004C65C6 /* CalendarDayCell.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		D30FB2142C51475800886CE4 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +90,7 @@
 		D30FB21F2C51475800886CE4 /* TaskManager_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D3008D252C540EFB004C65C6 /* Views */,
 				D3B487F82C5269A600CDC2D3 /* Controllers */,
 				D3B488022C526C9000CDC2D3 /* Helpers */,
 				D30FB2202C51475800886CE4 /* AppDelegate.swift */,
@@ -104,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D3B488002C526B4300CDC2D3 /* CalendarController.swift */,
+				D3008D1C2C540D7F004C65C6 /* CalendarHorizontalController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -112,6 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */,
+				D3008D1A2C5402AB004C65C6 /* BaseListController.swift */,
+				D3008D212C540E3F004C65C6 /* HorizontalSnappingController.swift */,
+				D3008D232C540E5E004C65C6 /* BetterSnappingLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -132,6 +165,9 @@
 			dependencies = (
 			);
 			name = TaskManager_iOS;
+			packageProductDependencies = (
+				D3008D1F2C540DE1004C65C6 /* SnapKit */,
+			);
 			productName = TaskManager_iOS;
 			productReference = D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +196,9 @@
 				Base,
 			);
 			mainGroup = D30FB2142C51475800886CE4;
+			packageReferences = (
+				D3008D1E2C540DE1004C65C6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = D30FB21E2C51475800886CE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,12 +226,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */,
+				D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */,
+				D3008D1D2C540D7F004C65C6 /* CalendarHorizontalController.swift in Sources */,
 				D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */,
 				D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */,
 				D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */,
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
 				D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */,
+				D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */,
+				D3008D1B2C5402AB004C65C6 /* BaseListController.swift in Sources */,
 				D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */,
+				D3008D222C540E3F004C65C6 /* HorizontalSnappingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3008D1E2C540DE1004C65C6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D3008D1F2C540DE1004C65C6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3008D1E2C540DE1004C65C6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D30FB2152C51475800886CE4 /* Project object */;
 }
