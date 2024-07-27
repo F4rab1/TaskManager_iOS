@@ -9,14 +9,16 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    private var tasks = [Task]()
+    private var tasks: Tasks?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         APIService.shared.fetchTasks { res, err in
-            print(res)
+            self.tasks = res
+            print(self.tasks ?? "No tasks available")
         }
+        
     }
     
 }

@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct Tasks: Decodable {
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [Task]
+}
+
 struct Task: Decodable {
     let id: Int
     let title: String

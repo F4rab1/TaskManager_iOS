@@ -13,7 +13,7 @@ class APIService {
     
     private let baseURL = "http://127.0.0.1:8000/api/"
     
-    func fetchTasks(completion: @escaping ([Task?], Error?) -> ()) {
+    func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
         
         let urlString = baseURL + "tasks/"
         guard let url = URL(string: urlString) else { return }
@@ -21,17 +21,17 @@ class APIService {
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             
             if let err = err {
-                completion([nil], err)
+                completion(nil, err)
                 return
             }
             
             print(data!)
             
             do {
-                let objects = try JSONDecoder().decode([Task].self, from: data!)
+                let objects = try JSONDecoder().decode(Tasks.self, from: data!)
                 completion(objects, nil)
             } catch {
-                completion([nil], error)
+                completion(nil, error)
             }
         }.resume()
     }
