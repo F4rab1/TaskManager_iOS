@@ -12,10 +12,12 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
     let dayCellId = "DayCell"
     private var selectedIndexPath: IndexPath? = IndexPath(item: 0, section: 0)
     private var calendarDays: [CalendarDay] = []
+    private var tasksByCompletionDate: Tasks?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
         
         let today = Date()
         calendarDays = generateCalendarDays(startingFrom: today)
@@ -60,6 +62,17 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
         }
         
         selectedIndexPath = indexPath
+        let selectedItemIndex = indexPath.item
+        let selectedDate = calendarDays[selectedItemIndex].formatted
+        
+        APIService.shared.fetchTasksByCompletionDate(completionDate: selectedDate) { res, err in
+            if let err = err {
+                print(err)
+            }
+            
+            self.tasksByCompletionDate = res
+            print(self.tasksByCompletionDate ?? "no tasks")
+        }
     }
     
 }

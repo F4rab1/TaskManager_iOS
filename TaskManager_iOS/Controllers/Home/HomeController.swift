@@ -16,7 +16,6 @@ class HomeController: UIViewController {
         
         APIService.shared.fetchTasks { res, err in
             self.tasks = res
-            print(self.tasks ?? "No tasks available")
         }
         
     }

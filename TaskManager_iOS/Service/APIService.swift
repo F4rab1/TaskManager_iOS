@@ -25,7 +25,28 @@ class APIService {
                 return
             }
             
-            print(data!)
+            do {
+                let objects = try JSONDecoder().decode(Tasks.self, from: data!)
+                completion(objects, nil)
+            } catch {
+                completion(nil, error)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchTasksByCompletionDate(completionDate: String, completion: @escaping (Tasks?, Error?) -> ()) {
+        
+        let urlString = baseURL + "tasks/?completion_date=" + completionDate
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            
+            if let err = err {
+                completion(nil, err)
+                return
+            }
             
             do {
                 let objects = try JSONDecoder().decode(Tasks.self, from: data!)
@@ -33,7 +54,9 @@ class APIService {
             } catch {
                 completion(nil, error)
             }
+            
         }.resume()
+        
     }
     
 }
