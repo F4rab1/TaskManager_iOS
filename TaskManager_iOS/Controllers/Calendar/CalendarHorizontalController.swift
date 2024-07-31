@@ -7,12 +7,16 @@
 
 import UIKit
 
+protocol CalendarHorizontalControllerDelegate: AnyObject {
+    func didFetchTasksByCompletionDate(_ tasks: Tasks)
+}
+
 class CalendarHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
     
     let dayCellId = "DayCell"
     private var selectedIndexPath: IndexPath? = IndexPath(item: 0, section: 0)
     private var calendarDays: [CalendarDay] = []
-    private var tasksByCompletionDate: Tasks?
+    weak var delegate: CalendarHorizontalControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -21,7 +25,6 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
         
         let today = Date()
         calendarDays = generateCalendarDays(startingFrom: today)
-        print(calendarDays)
         
         collectionView.register(CalendarDayCell.self, forCellWithReuseIdentifier: dayCellId)
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -70,8 +73,9 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
                 print(err)
             }
             
-            self.tasksByCompletionDate = res
-            print(self.tasksByCompletionDate ?? "no tasks")
+            DispatchQueue.main.async {
+                self.delegate?.didFetchTasksByCompletionDate(res!)
+            }
         }
     }
     

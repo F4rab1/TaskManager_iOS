@@ -23,6 +23,7 @@
 		D30FB22D2C51475A00886CE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30FB22B2C51475A00886CE4 /* LaunchScreen.storyboard */; };
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
+		D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */; };
 		D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */; };
 		D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FD2C526B2A00CDC2D3 /* AddController.swift */; };
 		D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488002C526B4300CDC2D3 /* CalendarController.swift */; };
@@ -47,6 +48,7 @@
 		D30FB22E2C51475A00886CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D3B487FD2C526B2A00CDC2D3 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		D3B488002C526B4300CDC2D3 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		D3008D252C540EFB004C65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3B2EE7D2C5AD80800940638 /* Task */,
 				D3008D262C540F08004C65C6 /* Calendar */,
 			);
 			path = Views;
@@ -145,6 +148,14 @@
 				D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D3B2EE7D2C5AD80800940638 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 		D3B487F82C5269A600CDC2D3 /* Controllers */ = {
@@ -274,6 +285,7 @@
 			files = (
 				D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */,
 				D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */,
+				D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */,
 				D3008D1D2C540D7F004C65C6 /* CalendarHorizontalController.swift in Sources */,
 				D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */,
 				D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */,
