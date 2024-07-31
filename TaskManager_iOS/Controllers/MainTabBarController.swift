@@ -12,7 +12,7 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.firstIndex(of: viewController)
 
-        if index == 1 {
+        if index == 2 {
             let controller = AddController()
             let navController = UINavigationController(rootViewController: controller)
             present(navController, animated: true, completion: nil)
@@ -51,13 +51,17 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupViewControllers() {
-        let homeNavController = createNavController(viewController: HomeController(), title: "Home", imageName: "home")
-        let addNavController = createNavController(viewController: AddController(), title: "", imageName: "plus 2")
-        let calendarNavController = createNavController(viewController: CalendarController(), title: "Calendar", imageName: "calendar")
+        let homeNavController = createNavController(viewController: HomeController(), title: "Home", imageName: "house.fill", size: 1.5)
+        let calendarNavController = createNavController(viewController: CalendarController(), title: "Calendar", imageName: "calendar", size: 1.5)
+        let addNavController = createNavController(viewController: AddController(), title: "", imageName: "plus.circle.fill", size: 2.5)
+        let notesNavController = createNavController(viewController: NotesController(), title: "Notes", imageName: "square.text.square", size: 1.5)
+        let profileNavController = createNavController(viewController: ProfileController(), title: "Profile", imageName: "person.fill", size: 1.5)
         
         viewControllers = [homeNavController,
+                           calendarNavController,
                            addNavController,
-                           calendarNavController]
+                           notesNavController,
+                           profileNavController]
         
         guard let items = tabBar.items else { return }
         
@@ -66,13 +70,43 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    fileprivate func createNavController(viewController: UIViewController, title: String, imageName: String) -> UIViewController {
+    fileprivate func createNavController(viewController: UIViewController, title: String, imageName: String, size: Float) -> UIViewController {
         let navController = UINavigationController(rootViewController: viewController)
         viewController.view.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
         navController.tabBarItem.title = title
-        navController.tabBarItem.image = UIImage(named: imageName)
+        if let image = UIImage(systemName: imageName) {
+            let resizedImage = image.resize(to: CGSize(width: image.size.width * CGFloat(size), height: image.size.height * CGFloat(size)))
+            navController.tabBarItem.image = resizedImage
+        }
         return navController
     }
     
+}
+
+extension UIImage {
+    func resize(to targetSize: CGSize) -> UIImage? {
+        let size = self.size
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what the aspect ratio should be
+        let newSize: CGSize
+        if widthRatio > heightRatio {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // Create a new rectangle to fit the resized image
+        let rect = CGRect(origin: .zero, size: newSize)
+        
+        // Resize the image
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        self.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
 

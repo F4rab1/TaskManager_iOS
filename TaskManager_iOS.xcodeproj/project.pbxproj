@@ -21,6 +21,8 @@
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
 		D30FB22A2C51475A00886CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30FB2292C51475A00886CE4 /* Assets.xcassets */; };
 		D30FB22D2C51475A00886CE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30FB22B2C51475A00886CE4 /* LaunchScreen.storyboard */; };
+		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
+		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
 		D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */; };
 		D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FD2C526B2A00CDC2D3 /* AddController.swift */; };
 		D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488002C526B4300CDC2D3 /* CalendarController.swift */; };
@@ -43,6 +45,8 @@
 		D30FB2292C51475A00886CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30FB22C2C51475A00886CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30FB22E2C51475A00886CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
+		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D3B487FD2C526B2A00CDC2D3 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		D3B488002C526B4300CDC2D3 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
@@ -127,12 +131,30 @@
 			path = TaskManager_iOS;
 			sourceTree = "<group>";
 		};
+		D3B2EE772C5AC96900940638 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2EE782C5AC9A600940638 /* NotesController.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		D3B2EE7A2C5AC9BA00940638 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D3B487F82C5269A600CDC2D3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3B487F92C5269E400CDC2D3 /* Home */,
 				D3B487FF2C526B3500CDC2D3 /* Calendar */,
 				D3B487FC2C526B0E00CDC2D3 /* Add */,
-				D3B487F92C5269E400CDC2D3 /* Home */,
+				D3B2EE772C5AC96900940638 /* Notes */,
+				D3B2EE7A2C5AC9BA00940638 /* Profile */,
 				D30FB2242C51475800886CE4 /* MainTabBarController.swift */,
 			);
 			path = Controllers;
@@ -259,12 +281,14 @@
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
 				D3008D302C54359C004C65C6 /* Tasks.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
+				D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */,
 				D3008D2E2C543537004C65C6 /* APIService.swift in Sources */,
 				D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */,
 				D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */,
 				D3008D1B2C5402AB004C65C6 /* BaseListController.swift in Sources */,
 				D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */,
 				D3008D222C540E3F004C65C6 /* HorizontalSnappingController.swift in Sources */,
+				D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
