@@ -103,6 +103,7 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskDetailController = TaskDetailController()
+        taskDetailController.task = tasksByCompletionDate?.results[indexPath.row]
         navigationController?.pushViewController(taskDetailController, animated: true)
     }
     

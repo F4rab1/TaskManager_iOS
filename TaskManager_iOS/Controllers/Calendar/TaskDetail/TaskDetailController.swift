@@ -10,6 +10,14 @@ import SnapKit
 
 class TaskDetailController: UIViewController {
     
+    var task: Task! {
+        didSet {
+            titleTextField.text = task.title
+            categoryTextField.text = task.category
+            descriptionTextView.text = task.description
+        }
+    }
+    
     private let titleTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Title of the task"
