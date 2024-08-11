@@ -17,6 +17,7 @@
 		D3008D2E2C543537004C65C6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2D2C543537004C65C6 /* APIService.swift */; };
 		D3008D302C54359C004C65C6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2F2C54359C004C65C6 /* Tasks.swift */; };
 		D308E20B2C6930F400835862 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E20A2C6930F400835862 /* Notes.swift */; };
+		D308E20E2C693B7A00835862 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E20D2C693B7A00835862 /* NoteTableViewCell.swift */; };
 		D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2202C51475800886CE4 /* AppDelegate.swift */; };
 		D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2222C51475800886CE4 /* SceneDelegate.swift */; };
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
@@ -43,6 +44,7 @@
 		D3008D2D2C543537004C65C6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D3008D2F2C54359C004C65C6 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		D308E20A2C6930F400835862 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		D308E20D2C693B7A00835862 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30FB2202C51475800886CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30FB2222C51475800886CE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		D3008D252C540EFB004C65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D308E20C2C693B5700835862 /* Note */,
 				D3B2EE7D2C5AD80800940638 /* Task */,
 				D3008D262C540F08004C65C6 /* Calendar */,
 			);
@@ -106,6 +109,14 @@
 				D3008D2D2C543537004C65C6 /* APIService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		D308E20C2C693B5700835862 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				D308E20D2C693B7A00835862 /* NoteTableViewCell.swift */,
+			);
+			path = Note;
 			sourceTree = "<group>";
 		};
 		D30FB2142C51475800886CE4 = {
@@ -321,6 +332,7 @@
 				D3E8949F2C5B982C0068C523 /* UIStackView+Extensions.swift in Sources */,
 				D3008D222C540E3F004C65C6 /* HorizontalSnappingController.swift in Sources */,
 				D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */,
+				D308E20E2C693B7A00835862 /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
