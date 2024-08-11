@@ -11,6 +11,10 @@ class NotesController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        APIService.shared.fetchNotes { res, err in
+            print(res)
+        }
 
         view.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
     }

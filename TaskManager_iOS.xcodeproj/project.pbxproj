@@ -16,6 +16,7 @@
 		D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2A2C542D63004C65C6 /* CalendarDay.swift */; };
 		D3008D2E2C543537004C65C6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2D2C543537004C65C6 /* APIService.swift */; };
 		D3008D302C54359C004C65C6 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3008D2F2C54359C004C65C6 /* Tasks.swift */; };
+		D308E20B2C6930F400835862 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E20A2C6930F400835862 /* Notes.swift */; };
 		D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2202C51475800886CE4 /* AppDelegate.swift */; };
 		D30FB2232C51475800886CE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2222C51475800886CE4 /* SceneDelegate.swift */; };
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
@@ -41,6 +42,7 @@
 		D3008D2A2C542D63004C65C6 /* CalendarDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDay.swift; sourceTree = "<group>"; };
 		D3008D2D2C543537004C65C6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D3008D2F2C54359C004C65C6 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		D308E20A2C6930F400835862 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30FB2202C51475800886CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30FB2222C51475800886CE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				D3008D2A2C542D63004C65C6 /* CalendarDay.swift */,
 				D3008D2F2C54359C004C65C6 /* Tasks.swift */,
+				D308E20A2C6930F400835862 /* Notes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */,
 				D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */,
 				D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */,
+				D308E20B2C6930F400835862 /* Notes.swift in Sources */,
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
 				D3008D302C54359C004C65C6 /* Tasks.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
