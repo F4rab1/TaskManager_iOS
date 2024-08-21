@@ -10,13 +10,23 @@ import SnapKit
 
 class NoteTableViewCell: UITableViewCell {
     
+    private let shadowContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowRadius = 10
+        view.layer.shadowOffset = CGSize(width: 0, height: 10)
+        return view
+    }()
+    
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 237, green: 242, blue: 246)
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.lightGray.cgColor
-        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor(red: 211, green: 211, blue: 211).cgColor
+        view.layer.borderWidth = 0.5
         view.layer.masksToBounds = true
         return view
     }()
@@ -52,15 +62,20 @@ class NoteTableViewCell: UITableViewCell {
     func setupUI() {
         contentView.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
         
-        contentView.addSubview(containerView)
+        contentView.addSubview(shadowContainerView)
+        shadowContainerView.addSubview(containerView)
         containerView.addSubview(titleLabel)
         containerView.addSubview(textOfNoteLabel)
     }
     
     func setupConstraints() {
-        containerView.snp.makeConstraints { make in
+        shadowContainerView.snp.makeConstraints { make in
             make.top.bottom.equalTo(contentView).inset(8)
             make.leading.trailing.equalTo(contentView).inset(12)
+        }
+        
+        containerView.snp.makeConstraints { make in
+            make.edges.equalTo(shadowContainerView)
         }
         
         titleLabel.snp.makeConstraints { make in
