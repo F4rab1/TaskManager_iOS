@@ -94,7 +94,6 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
         
         let task = tasksByCompletionDate?.results[indexPath.row]
-        cell.categoryLabel.text = task?.category
         cell.titleLabel.text = task?.title
         cell.stageLabel.text = task?.stage
         

@@ -13,7 +13,7 @@ class TaskDetailController: UIViewController {
     var task: Task! {
         didSet {
             titleTextField.text = task.title
-            categoryTextField.text = task.category
+            categoryTextField.text = String(task.category)
             descriptionTextView.text = task.description
         }
     }

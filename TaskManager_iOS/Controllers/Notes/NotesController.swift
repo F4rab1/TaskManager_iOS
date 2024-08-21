@@ -22,6 +22,8 @@ class NotesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Notes" 
+        
         setupUI()
         setupConstraints()
         setupTableView()
