@@ -99,17 +99,18 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
     }
     
     private func deleteNote(at indexPath: IndexPath) {
+        guard let note = notes?[indexPath.row] else { return }
+        
         notes?.remove(at: indexPath.row)
-        
-        // APIService.shared.deleteNote(noteId: note.id) { response, error in
-        //     if let error = error {
-        //         print(error)
-        //     } else {
-        //
-        //     }
-        // }
-        
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        APIService.shared.deleteNote(noteId: note.id) { error in
+            if let error = error {
+                print("Failed to delete note:", error)
+            } else {
+                print("Note successfully deleted from backend")
+            }
+        }
     }
 }
 

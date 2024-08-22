@@ -82,4 +82,26 @@ class APIService {
         
     }
     
+    func deleteNote(noteId: Int, completion: @escaping (Error?) -> ()) {
+        let urlString = baseURL + "notes/\(noteId)/"
+        guard let url = URL(string: urlString) else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { (_, resp, err) in
+            if let err = err {
+                completion(err)
+                return
+            }
+            
+            if let httpResponse = resp as? HTTPURLResponse, httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
+                completion(nil)
+            } else {
+                let statusError = NSError(domain: "", code: (resp as? HTTPURLResponse)?.statusCode ?? 500, userInfo: [NSLocalizedDescriptionKey: "Failed to delete the note."])
+                completion(statusError)
+            }
+        }.resume()
+    }
+    
 }

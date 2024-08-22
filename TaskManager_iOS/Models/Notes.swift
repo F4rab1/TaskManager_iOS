@@ -8,6 +8,7 @@
 import Foundation
 
 struct Note: Decodable {
+    let id: Int
     let title: String
     let text: String
     let created_at: String
