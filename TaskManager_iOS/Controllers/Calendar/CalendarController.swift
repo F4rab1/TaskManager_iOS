@@ -98,7 +98,6 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
         let categoryName = self.categoryDict[String(task!.category)] ?? "No Category"
         cell.categoryLabel.text = categoryName
         cell.titleLabel.text = task?.title
-        cell.stageLabel.text = task?.stage
         
         return cell
     }

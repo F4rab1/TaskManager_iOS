@@ -10,13 +10,15 @@ import SnapKit
 
 class TaskTableViewCell: UITableViewCell {
     
+    var isCompleted: Bool = false
+    
     private let shadowContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
-        view.layer.shadowColor = UIColor.blue.cgColor
+        view.layer.shadowColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 2
-        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
         return view
     }()
     
@@ -25,7 +27,7 @@ class TaskTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor(red: 171, green: 206, blue: 245).cgColor
+        view.layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         view.layer.borderWidth = 0.7
         view.layer.masksToBounds = true
         return view
@@ -33,14 +35,14 @@ class TaskTableViewCell: UITableViewCell {
     
     let leftView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 16, green: 94, blue: 245)
+        view.backgroundColor = UIColor(red: 23, green: 162, blue: 184)
         return view
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 16, green: 94, blue: 245)
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Title"
         return label
@@ -58,16 +60,20 @@ class TaskTableViewCell: UITableViewCell {
     let stageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor(red: 16, green: 94, blue: 245)
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "In Progress"
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
+    
+    func configureStage() {
+        stageLabel.text = isCompleted ? "COMPLETED" : "IN PROGRESS"
+        stageLabel.textColor = isCompleted ? UIColor(red: 23, green: 162, blue: 184) : UIColor.gray
+        stageImageView.image = UIImage(named: isCompleted ? "completed" : "in_progress")
+    }
     
     let stageImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "checkmark.circle")
         imageView.tintColor = .green
         return imageView
     }()
@@ -85,6 +91,7 @@ class TaskTableViewCell: UITableViewCell {
     
     func setupUI() {
         contentView.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
+        configureStage()
         
         contentView.addSubview(shadowContainerView)
         shadowContainerView.addSubview(containerView)
@@ -108,7 +115,7 @@ class TaskTableViewCell: UITableViewCell {
         leftView.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading)
             make.width.equalTo(3)
-            make.height.equalTo(50)
+            make.height.equalTo(60)
             make.centerY.equalTo(containerView.snp.centerY)
         }
         
@@ -121,14 +128,14 @@ class TaskTableViewCell: UITableViewCell {
             make.leading.equalTo(containerView).inset(15)
         }
         
-        stageLabel.snp.makeConstraints { make in
+        stageImageView.snp.makeConstraints { make in
             make.bottom.leading.equalTo(containerView).inset(15)
+            make.width.height.equalTo(20)
         }
         
-        stageImageView.snp.makeConstraints { make in
-            make.leading.equalTo(stageLabel.snp.trailing).offset(10)
+        stageLabel.snp.makeConstraints { make in
+            make.leading.equalTo(stageImageView.snp.trailing).offset(6)
             make.bottom.equalTo(containerView).inset(15)
-            make.width.height.equalTo(20)
         }
     }
 }

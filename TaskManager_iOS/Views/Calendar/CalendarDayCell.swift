@@ -65,7 +65,7 @@ class CalendarDayCell: UICollectionViewCell {
     
     func setupUI() {
         layer.borderWidth = 1.5
-        layer.borderColor = UIColor(red: 16, green: 94, blue: 245).cgColor
+        layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         layer.cornerRadius = 14
         clipsToBounds = true
         
@@ -76,7 +76,7 @@ class CalendarDayCell: UICollectionViewCell {
     }
     
     func setupShadow() {
-        layer.shadowColor = UIColor.blue.cgColor
+        layer.shadowColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 3
@@ -94,7 +94,7 @@ class CalendarDayCell: UICollectionViewCell {
     }
     
     func configureForSelectedState() {
-        backgroundColor = UIColor(red: 16, green: 94, blue: 245)
+        backgroundColor = UIColor(red: 23, green: 162, blue: 184)
         monthLabel.textColor = .white
         dayLabel.textColor = .white
         weekLabel.textColor = .white
