@@ -59,6 +59,32 @@ class APIService {
         
     }
     
+    func fetchAndStoreCategories(completion: @escaping (Error?) -> ()) {
+        
+        let urlString = baseURL + "categories/"
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let categories = try JSONDecoder().decode([Category].self, from: data)
+                let categoryDict = categories.reduce(into: [String: String]()) { dict, category in
+                    dict[String(category.id)] = category.title
+                }
+                UserDefaults.standard.set(categoryDict, forKey: "categories")
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+        }.resume()
+    }
+    
     func fetchNotes(completion: @escaping ([Note]?, Error?) -> ()) {
         
         let urlString = baseURL + "notes/"

@@ -10,13 +10,23 @@ import SnapKit
 
 class TaskTableViewCell: UITableViewCell {
     
+    private let shadowContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.1
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        return view
+    }()
+    
     let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 20
-        view.layer.borderColor = UIColor(red: 16, green: 94, blue: 245).cgColor
-        view.layer.borderWidth = 1
+        view.backgroundColor = UIColor(red: 237, green: 242, blue: 246)
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = UIColor(red: 211, green: 211, blue: 211).cgColor
+        view.layer.borderWidth = 0.5
         view.layer.masksToBounds = true
         return view
     }()
@@ -24,7 +34,7 @@ class TaskTableViewCell: UITableViewCell {
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .lightGray
+        label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "Category"
         return label
@@ -34,7 +44,7 @@ class TaskTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Title"
         return label
     }()
@@ -52,7 +62,7 @@ class TaskTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "checkmark.circle")
-        imageView.tintColor = .blue
+        imageView.tintColor = .green
         return imageView
     }()
     
@@ -70,7 +80,8 @@ class TaskTableViewCell: UITableViewCell {
     func setupUI() {
         contentView.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
         
-        contentView.addSubview(containerView)
+        contentView.addSubview(shadowContainerView)
+        shadowContainerView.addSubview(containerView)
         containerView.addSubview(categoryLabel)
         containerView.addSubview(titleLabel)
         containerView.addSubview(stageLabel)
@@ -78,8 +89,13 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     func setupConstraints() {
+        shadowContainerView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(contentView).inset(8)
+            make.leading.trailing.equalTo(contentView).inset(12)
+        }
+        
         containerView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView).inset(16)
+            make.edges.equalTo(shadowContainerView)
         }
         
         categoryLabel.snp.makeConstraints { make in

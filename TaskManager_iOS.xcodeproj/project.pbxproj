@@ -30,6 +30,7 @@
 		D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FD2C526B2A00CDC2D3 /* AddController.swift */; };
 		D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488002C526B4300CDC2D3 /* CalendarController.swift */; };
 		D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */; };
+		D3CB71062C777A8400BF83B8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB71052C777A8400BF83B8 /* Category.swift */; };
 		D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E8949C2C5B7FCB0068C523 /* TaskDetailController.swift */; };
 		D3E8949F2C5B982C0068C523 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E8949E2C5B982C0068C523 /* UIStackView+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		D3B487FD2C526B2A00CDC2D3 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		D3B488002C526B4300CDC2D3 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		D3CB71052C777A8400BF83B8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D3E8949C2C5B7FCB0068C523 /* TaskDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailController.swift; sourceTree = "<group>"; };
 		D3E8949E2C5B982C0068C523 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				D3008D2A2C542D63004C65C6 /* CalendarDay.swift */,
 				D3008D2F2C54359C004C65C6 /* Tasks.swift */,
 				D308E20A2C6930F400835862 /* Notes.swift */,
+				D3CB71052C777A8400BF83B8 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
 				D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */,
 				D3008D2E2C543537004C65C6 /* APIService.swift in Sources */,
+				D3CB71062C777A8400BF83B8 /* Category.swift in Sources */,
 				D30FB2212C51475800886CE4 /* AppDelegate.swift in Sources */,
 				D3008D282C540F1E004C65C6 /* CalendarDayCell.swift in Sources */,
 				D3008D1B2C5402AB004C65C6 /* BaseListController.swift in Sources */,

@@ -59,6 +59,7 @@ class CalendarDayCell: UICollectionViewCell {
         
         backgroundColor = .white
         setupUI()
+        setupShadow()
         setupConstraints()
     }
     
@@ -72,6 +73,14 @@ class CalendarDayCell: UICollectionViewCell {
         stackView.addArrangedSubview(dayLabel)
         stackView.addArrangedSubview(weekLabel)
         contentView.addSubview(stackView)
+    }
+    
+    func setupShadow() {
+        layer.shadowColor = UIColor.blue.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 3
+        layer.masksToBounds = false
     }
     
     func setupConstraints() {

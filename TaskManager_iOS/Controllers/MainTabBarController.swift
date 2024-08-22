@@ -28,8 +28,20 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.delegate = self
         
+        fetchAndStoreCategories()
+        
         setupTabBarAppearance()
         setupViewControllers()
+    }
+    
+    func fetchAndStoreCategories() {
+        APIService.shared.fetchAndStoreCategories { error in
+            if let error = error {
+                print("Failed to fetch categories: \(error.localizedDescription)")
+            } else {
+                print("Categories fetched and stored successfully")
+            }
+        }
     }
     
     func setupTabBarAppearance() {

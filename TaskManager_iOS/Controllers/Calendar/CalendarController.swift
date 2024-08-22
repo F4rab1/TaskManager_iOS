@@ -20,6 +20,7 @@ class CalendarController: UIViewController {
     }()
     
     private var tasksByCompletionDate: Tasks?
+    var categoryDict: [String: String] = UserDefaults.standard.dictionary(forKey: "categories") as? [String: String] ?? [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,8 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
         
         let task = tasksByCompletionDate?.results[indexPath.row]
+        let categoryName = self.categoryDict[String(task!.category)] ?? "No Category"
+        cell.categoryLabel.text = categoryName
         cell.titleLabel.text = task?.title
         cell.stageLabel.text = task?.stage
         
@@ -107,6 +110,6 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 110
     }
 }
