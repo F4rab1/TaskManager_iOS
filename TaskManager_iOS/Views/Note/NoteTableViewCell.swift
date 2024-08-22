@@ -15,8 +15,8 @@ class NoteTableViewCell: UITableViewCell {
         view.backgroundColor = .clear
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1
-        view.layer.shadowRadius = 10
-        view.layer.shadowOffset = CGSize(width: 0, height: 10)
+        view.layer.shadowRadius = 2
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
         return view
     }()
     
