@@ -74,7 +74,7 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
             }
             
             DispatchQueue.main.async {
-                self.delegate?.didFetchTasksByCompletionDate(res!)
+                self.delegate?.didFetchTasksByCompletionDate(res ?? Tasks(count: 0, next: nil, previous: nil, results: []))
             }
         }
     }
