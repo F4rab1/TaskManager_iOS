@@ -11,6 +11,23 @@ import SnapKit
 class CalendarController: UIViewController {
     
     let calendarHorizontalController = CalendarHorizontalController()
+    
+    let calendarImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.image = UIImage(named: "calendar")
+        iv.tintColor = UIColor(red: 23, green: 162, blue: 184)
+        return iv
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "August 22, 2024"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        return label
+    }()
+    
     let tableView: UITableView = {
         let tv = UITableView()
         tv.separatorStyle = .none
@@ -34,6 +51,7 @@ class CalendarController: UIViewController {
     }
     
     func setupUI() {
+        setupNavigationBarTitleView()
         view.addSubview(calendarHorizontalController.view)
         view.addSubview(tableView)
     }
@@ -67,6 +85,47 @@ class CalendarController: UIViewController {
         }
     }
     
+    func setupNavigationBarTitleView() {
+        let leftView = UIView()
+
+        let calendarImageView = UIImageView()
+        calendarImageView.contentMode = .scaleAspectFit
+        calendarImageView.image = UIImage(systemName: "calendar")
+        calendarImageView.tintColor = UIColor(red: 23/255, green: 162/255, blue: 184/255, alpha: 1)
+        
+        let dateLabel = UILabel()
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        dateLabel.textColor = .black
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        let todayDate = dateFormatter.string(from: Date())
+        dateLabel.text = todayDate
+        
+        leftView.addSubview(calendarImageView)
+        leftView.addSubview(dateLabel)
+        
+        calendarImageView.snp.makeConstraints { make in
+            make.leading.equalTo(leftView)
+            make.centerY.equalTo(leftView)
+            make.height.width.equalTo(30)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.leading.equalTo(calendarImageView.snp.trailing).offset(8)
+            make.centerY.equalTo(leftView)
+            make.trailing.equalTo(leftView)
+        }
+        
+        leftView.snp.makeConstraints { make in
+            make.height.equalTo(30)
+        }
+        
+        let leftBarButtonItem = UIBarButtonItem(customView: leftView)
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -98,6 +157,11 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
         let categoryName = self.categoryDict[String(task!.category)] ?? "No Category"
         cell.categoryLabel.text = categoryName
         cell.titleLabel.text = task?.title
+        if task?.stage == "completed" {
+            cell.isCompleted = true
+        } else {
+            cell.isCompleted = false
+        }
         
         return cell
     }

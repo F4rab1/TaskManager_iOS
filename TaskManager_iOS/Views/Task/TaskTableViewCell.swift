@@ -10,7 +10,11 @@ import SnapKit
 
 class TaskTableViewCell: UITableViewCell {
     
-    var isCompleted: Bool = false
+    var isCompleted: Bool = false {
+        didSet {
+            configureStage()
+        }
+    }
     
     private let shadowContainerView: UIView = {
         let view = UIView()

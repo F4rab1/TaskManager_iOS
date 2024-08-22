@@ -45,7 +45,7 @@ class BaseTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupTabBarAppearance() {
-        let selectedColor = UIColor(red: 16, green: 94, blue: 245)
+        let selectedColor = UIColor(red: 23, green: 162, blue: 184)
         let unselectedColor = UIColor.black
         
         let appearance = UITabBarItem.appearance()
