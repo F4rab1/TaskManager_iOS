@@ -13,12 +13,21 @@ class APIService {
     
     private let baseURL = "http://127.0.0.1:8000/api/"
     
+    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NTcwMDc3LCJpYXQiOjE3MjQ0ODM2NzcsImp0aSI6IjllZTIzNDJlNmI4MjQzMjc5MGYzODMyYWM0MmExY2JjIiwidXNlcl9pZCI6M30.80lml_S0IRblQNx-gXS0pW0_B_iPpiCiEP4ONWWbK6I"
+    
     func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
         
         let urlString = baseURL + "tasks/"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, resp, err) in
             
             if let err = err {
                 completion(nil, err)
@@ -41,7 +50,14 @@ class APIService {
         let urlString = baseURL + "tasks/?completion_date=" + completionDate
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, resp, err) in
             
             if let err = err {
                 completion(nil, err)
@@ -64,7 +80,14 @@ class APIService {
         let urlString = baseURL + "categories/"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(error)
                 return
@@ -90,7 +113,14 @@ class APIService {
         let urlString = baseURL + "notes/"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, resp, err) in
             
             if let err = err {
                 completion(nil, err)
@@ -114,6 +144,10 @@ class APIService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         URLSession.shared.dataTask(with: request) { (_, resp, err) in
             if let err = err {

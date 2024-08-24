@@ -24,10 +24,18 @@ class AddController: UIViewController {
         label.textColor = UIColor(red: 23, green: 162, blue: 184)
         return label
     }()
-
+    
     let startDateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Feb-22-2024", for: .normal)
+        
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MMM-dd-yyyy"
+        let dateString = dateFormatter.string(from: today)
+        button.setTitle(dateString, for: .normal)
+        
+        button.isEnabled = false
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
         button.backgroundColor = UIColor(red: 234, green: 255, blue: 255)
