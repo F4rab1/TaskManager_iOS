@@ -19,11 +19,14 @@ class NotesController: UIViewController {
         
         return tv
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Notes" 
+        title = "Notes"
+        
+        let addButton = UIBarButtonItem(title: "Add Note", style: .plain, target: self, action: #selector(handleAddNote))
+        navigationItem.rightBarButtonItem = addButton
         
         setupUI()
         setupConstraints()
@@ -37,7 +40,7 @@ class NotesController: UIViewController {
     }
     
     func fetchNotes() {
-        APIService.shared.fetchNotes() { res, err in
+        APIServiceNotes.shared.fetchNotes() { res, err in
             if let err = err {
                 print(err)
             }
@@ -45,6 +48,28 @@ class NotesController: UIViewController {
             DispatchQueue.main.async {
                 self.notes = res
                 self.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func handleAddNote() {
+        APIServiceNotes.shared.postNote(title: "2Sample Title from iOS 2", text: "2Sample text for the note.2") { note, err in
+            if let err = err {
+                print("Failed to post note:", err)
+                return
+            }
+            
+            if let note = note {
+                print("Successfully posted note:", note)
+                
+                DispatchQueue.main.async {
+                    if self.notes != nil {
+                        self.notes?.append(note)
+                    } else {
+                        self.notes = [note]
+                    }
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -61,7 +86,7 @@ class NotesController: UIViewController {
         tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: "NoteCell")
         tableView.tableFooterView = UIView()
     }
-
+    
 }
 
 extension NotesController: UITableViewDataSource, UITableViewDelegate {
@@ -104,7 +129,7 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
         notes?.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        APIService.shared.deleteNote(noteId: note.id) { error in
+        APIServiceNotes.shared.deleteNote(noteId: note.id) { error in
             if let error = error {
                 print("Failed to delete note:", error)
             } else {
@@ -117,14 +142,14 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
 func createCustomDeleteImage() -> UIImage? {
     let size = CGSize(width: 50, height: 50)
     let renderer = UIGraphicsImageRenderer(size: size)
-
+    
     let image = renderer.image { context in
         let rect = CGRect(origin: .zero, size: size)
         
         UIColor.red.setFill()
         let roundedRectPath = UIBezierPath(roundedRect: rect, cornerRadius: 10)
         roundedRectPath.fill()
-
+        
         if let trashImage = UIImage(systemName: "trash") {
             let imageSize = CGSize(width: 24, height: 24)
             let imageRect = CGRect(
@@ -136,6 +161,6 @@ func createCustomDeleteImage() -> UIImage? {
             trashImage.withTintColor(.white).draw(in: imageRect)
         }
     }
-
+    
     return image
 }
