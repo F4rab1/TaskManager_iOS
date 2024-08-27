@@ -20,13 +20,29 @@ class NotesController: UIViewController {
         return tv
     }()
     
+    private let shadowAddButton: ShadowContainerView = {
+        let view = ShadowContainerView(shadowColor: UIColor(red: 23, green: 162, blue: 184), shadowOpacity: 0.1, shadowRadius: 2, shadowOffset: CGSize(width: 0, height: 6))
+        return view
+    }()
+    
+    let addNoteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add Note", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 23, green: 162, blue: 184)
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Notes"
         
-        let addButton = UIBarButtonItem(title: "Add Note", style: .plain, target: self, action: #selector(handleAddNote))
-        navigationItem.rightBarButtonItem = addButton
+        let customBarButton = UIBarButtonItem(customView: shadowAddButton)
+        navigationItem.rightBarButtonItem = customBarButton
         
         setupUI()
         setupConstraints()
@@ -37,6 +53,9 @@ class NotesController: UIViewController {
     
     func setupUI() {
         view.addSubview(tableView)
+        shadowAddButton.addSubview(addNoteButton)
+        
+        addNoteButton.addTarget(self, action: #selector(handleAddNote), for: .touchUpInside)
     }
     
     func fetchNotes() {
@@ -53,30 +72,23 @@ class NotesController: UIViewController {
     }
     
     @objc func handleAddNote() {
-        APIServiceNotes.shared.postNote(title: "2Sample Title from iOS 2", text: "2Sample text for the note.2") { note, err in
-            if let err = err {
-                print("Failed to post note:", err)
-                return
-            }
-            
-            if let note = note {
-                print("Successfully posted note:", note)
-                
-                DispatchQueue.main.async {
-                    if self.notes != nil {
-                        self.notes?.append(note)
-                    } else {
-                        self.notes = [note]
-                    }
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        let controller = AddNoteController()
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true, completion: nil)
     }
     
     func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        shadowAddButton.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        addNoteButton.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     

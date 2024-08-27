@@ -39,7 +39,7 @@ class AddController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
         button.backgroundColor = UIColor(red: 234, green: 255, blue: 255)
-        button.layer.borderColor = UIColor(red: 133, green: 246, blue: 255).cgColor
+        button.layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         button.layer.borderWidth = 0.5
         button.layer.cornerRadius = 10
         return button
@@ -58,7 +58,7 @@ class AddController: UIViewController {
         button.setTitle("Feb-22-2024", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.darkGray, for: .normal)
-        button.layer.borderColor = UIColor(red: 133, green: 246, blue: 255).cgColor
+        button.layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         button.layer.borderWidth = 0.5
         button.layer.cornerRadius = 10
         return button
