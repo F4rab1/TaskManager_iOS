@@ -147,7 +147,7 @@ extension CalendarController: CalendarHorizontalControllerDelegate {
 extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasksByCompletionDate?.count ?? 0
+        return tasksByCompletionDate?.results.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,4 +175,32 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
+            self?.deleteTask(at: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.image = createCustomDeleteImage()
+        deleteAction.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+    
+    private func deleteTask(at indexPath: IndexPath) {
+        guard let task = tasksByCompletionDate?.results[indexPath.row] else { return }
+        
+        tasksByCompletionDate?.results.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        APIService.shared.deleteTask(taskId: task.id) { error in
+            if let error = error {
+                print("Failed to delete task:", error)
+            } else {
+                print("Task successfully deleted from backend")
+            }
+        }
+    }
+    
 }

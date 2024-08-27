@@ -13,7 +13,7 @@ class APIService {
     
     private let baseURL = "http://127.0.0.1:8000/api/"
     
-    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0NzgzMDkxLCJpYXQiOjE3MjQ2OTY2OTEsImp0aSI6IjIzYzA0YzljZTUwMDRhYWY4YTM2MTlmNzdhZTdmNzAwIiwidXNlcl9pZCI6M30.raAk88ElTFIdsyce18MMwlF18MX50JX9rLPUmN0g9-o"
+    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI0ODcyNDI3LCJpYXQiOjE3MjQ3ODYwMjcsImp0aSI6IjE5NDMzNTA5MWVkMzRiZDFiMWFkZDAwMzMxYTMzYTVhIiwidXNlcl9pZCI6M30._STjx5saLkcbcQDt-HKNLpar3BDN2xlvuAFVipZ9BSg"
     
     func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
         
@@ -73,6 +73,32 @@ class APIService {
             
         }.resume()
         
+    }
+    
+    func deleteTask(taskId: Int, completion: @escaping (Error?) -> ()) {
+        let urlString = baseURL + "tasks/\(taskId)/"
+        guard let url = URL(string: urlString) else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        URLSession.shared.dataTask(with: request) { (_, resp, err) in
+            if let err = err {
+                completion(err)
+                return
+            }
+            
+            if let httpResponse = resp as? HTTPURLResponse, httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 {
+                completion(nil)
+            } else {
+                let statusError = NSError(domain: "", code: (resp as? HTTPURLResponse)?.statusCode ?? 500, userInfo: [NSLocalizedDescriptionKey: "Failed to delete the task."])
+                completion(statusError)
+            }
+        }.resume()
     }
     
     func fetchAndStoreCategories(completion: @escaping (Error?) -> ()) {

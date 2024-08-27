@@ -11,7 +11,7 @@ struct Tasks: Decodable {
     let count: Int
     let next: String?
     let previous: String?
-    let results: [Task]
+    var results: [Task]
 }
 
 struct Task: Decodable {
