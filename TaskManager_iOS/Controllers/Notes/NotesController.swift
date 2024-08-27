@@ -73,6 +73,10 @@ class NotesController: UIViewController {
     
     @objc func handleAddNote() {
         let controller = AddNoteController()
+        controller.onNoteAdded = { [weak self] note in
+            self?.notes?.append(note)
+            self?.tableView.reloadData()
+        }
         let navController = UINavigationController(rootViewController: controller)
         present(navController, animated: true, completion: nil)
     }

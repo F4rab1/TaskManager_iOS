@@ -10,6 +10,8 @@ import SnapKit
 
 class AddNoteController: UIViewController, UITextViewDelegate {
     
+    var onNoteAdded: ((Note) -> Void)?
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
@@ -101,8 +103,21 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             return
         }
         
-        print(title)
-        print(text)
+        APIServiceNotes.shared.postNote(title: title, text: text) { [weak self] note, err in
+            if let err = err {
+                print("Failed to post note:", err)
+                return
+            }
+            
+            if let note = note {
+                print("Successfully posted note:", note)
+                
+                DispatchQueue.main.async {
+                    self?.onNoteAdded?(note)
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @objc func clearPlaceholder() {

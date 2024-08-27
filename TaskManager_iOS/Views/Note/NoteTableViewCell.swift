@@ -70,8 +70,8 @@ class NoteTableViewCell: UITableViewCell {
     
     func setupConstraints() {
         shadowContainerView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(contentView).inset(8)
-            make.leading.trailing.equalTo(contentView).inset(12)
+            make.top.bottom.equalToSuperview().inset(8)
+            make.leading.trailing.equalToSuperview().inset(12)
         }
         
         containerView.snp.makeConstraints { make in
