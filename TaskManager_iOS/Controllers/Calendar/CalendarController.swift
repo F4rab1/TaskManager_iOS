@@ -162,6 +162,16 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.isCompleted = false
         }
+        switch task?.priority {
+        case 1:
+            cell.priorityLabel.text = "LOW"
+        case 2:
+            cell.priorityLabel.text = "MEDIUM"
+        case 3:
+            cell.priorityLabel.text = "HIGH"
+        default:
+            cell.priorityLabel.text = "NULL"
+        }
         
         return cell
     }

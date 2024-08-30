@@ -13,7 +13,7 @@ class APIServiceNotes {
     
     private let baseURL = "http://127.0.0.1:8000/api/"
     
-    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MDM2NTczLCJpYXQiOjE3MjQ5NTAxNzMsImp0aSI6ImZiZDVjZWI1ZjBlYzQzOWNiMDdmMzVmNmQ5OTExNzE2IiwidXNlcl9pZCI6M30.D-CrYFSct4irronzhvo2EjkIZLyxz3UyIee-V77XmsI"
+    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MTI5NDk4LCJpYXQiOjE3MjUwNDMwOTgsImp0aSI6ImQ5NDRhMDRlMzIyZjQ5MGRhYjEwNGY2YjQxODRiMWFkIiwidXNlcl9pZCI6M30.I08Z7M_ka3W7HO4hDaJK5fkwHAiaXS3I35-aEwgel88"
     
     func fetchNotes(completion: @escaping ([Note]?, Error?) -> ()) {
         
