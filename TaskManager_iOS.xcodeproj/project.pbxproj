@@ -23,6 +23,7 @@
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
 		D30FB22A2C51475A00886CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30FB2292C51475A00886CE4 /* Assets.xcassets */; };
 		D30FB22D2C51475A00886CE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30FB22B2C51475A00886CE4 /* LaunchScreen.storyboard */; };
+		D359A6952C824D100035299D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359A6942C824D100035299D /* Token.swift */; };
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
 		D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		D30FB2292C51475A00886CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30FB22C2C51475A00886CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30FB22E2C51475A00886CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D359A6942C824D100035299D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				D3008D2F2C54359C004C65C6 /* Tasks.swift */,
 				D308E20A2C6930F400835862 /* Notes.swift */,
 				D3CB71052C777A8400BF83B8 /* Category.swift */,
+				D359A6942C824D100035299D /* Token.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
 				D3008D302C54359C004C65C6 /* Tasks.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
+				D359A6952C824D100035299D /* Token.swift in Sources */,
 				D3CB71082C77AACE00BF83B8 /* UILabel+Extensions.swift in Sources */,
 				D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */,
 				D3008D2E2C543537004C65C6 /* APIService.swift in Sources */,
