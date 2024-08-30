@@ -19,6 +19,7 @@ struct Task: Decodable {
     let title: String
     let description: String
     let stage: String
+    let priority: Int
     let category: Int
     let created_at: String
     let completion_date: String

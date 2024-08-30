@@ -23,49 +23,75 @@ class TaskTableViewCell: UITableViewCell {
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 2
         view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        
         return view
     }()
     
     let containerView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
         view.layer.borderWidth = 0.7
         view.layer.masksToBounds = true
+        
         return view
     }()
     
     let leftView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 23, green: 162, blue: 184)
+        
         return view
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 23, green: 162, blue: 184)
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Title"
+        
         return label
     }()
     
     let categoryLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "Category"
+        
         return label
+    }()
+    
+    let stageImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = .green
+        
+        return imageView
     }()
     
     let stageLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 23, green: 162, blue: 184)
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        return label
+    }()
+    
+    let priorityImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = UIColor(red: 23, green: 162, blue: 184)
+        imageView.image = UIImage(systemName: "flag.square.fill")
+        
+        return imageView
+    }()
+    
+    let priorityLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "HIGH"
+        
         return label
     }()
     
@@ -74,13 +100,6 @@ class TaskTableViewCell: UITableViewCell {
         stageLabel.textColor = isCompleted ? UIColor(red: 23, green: 162, blue: 184) : UIColor.gray
         stageImageView.image = UIImage(named: isCompleted ? "completed" : "in_progress")
     }
-    
-    let stageImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .green
-        return imageView
-    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -104,6 +123,8 @@ class TaskTableViewCell: UITableViewCell {
         containerView.addSubview(titleLabel)
         containerView.addSubview(stageLabel)
         containerView.addSubview(stageImageView)
+        containerView.addSubview(priorityImageView)
+        containerView.addSubview(priorityLabel)
     }
     
     func setupConstraints() {
@@ -124,7 +145,7 @@ class TaskTableViewCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(containerView).inset(15)
+            make.top.leading.trailing.equalTo(containerView).inset(15)
         }
         
         categoryLabel.snp.makeConstraints { make in
@@ -139,6 +160,17 @@ class TaskTableViewCell: UITableViewCell {
         
         stageLabel.snp.makeConstraints { make in
             make.leading.equalTo(stageImageView.snp.trailing).offset(6)
+            make.bottom.equalTo(containerView).inset(15)
+        }
+        
+        priorityImageView.snp.makeConstraints { make in
+            make.trailing.equalTo(priorityLabel.snp.leading).offset(-2)
+            make.centerY.equalTo(stageLabel.snp.centerY).inset(15)
+            make.width.height.equalTo(26)
+        }
+        
+        priorityLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(containerView).inset(15)
             make.bottom.equalTo(containerView).inset(15)
         }
     }
