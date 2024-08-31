@@ -13,7 +13,48 @@ class APIService {
     
     private let baseURL = "http://127.0.0.1:8000/api/"
     
-    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MTI5NDk4LCJpYXQiOjE3MjUwNDMwOTgsImp0aSI6ImQ5NDRhMDRlMzIyZjQ5MGRhYjEwNGY2YjQxODRiMWFkIiwidXNlcl9pZCI6M30.I08Z7M_ka3W7HO4hDaJK5fkwHAiaXS3I35-aEwgel88"
+    var accessToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI1MjEwNDg2LCJpYXQiOjE3MjUxMjQwODYsImp0aSI6ImU1OTJjMDcwNmJiNTRhYWQ4YTA5NmU0MjQzMDNiM2MzIiwidXNlcl9pZCI6M30.YRqDKXoKvLOWILNsuERw97b-M787w6DwQFNlvMHacqg"
+    
+    func post(endpoint: String, parameters: [String: Any], completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: baseURL + endpoint) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(.failure(error))
+                return
+            }
+            
+            let statusCode = httpResponse.statusCode
+            if 200...299 ~= statusCode {
+                if let data = data {
+                    completion(.success(data))
+                } else {
+                    let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Empty response data"])
+                    completion(.failure(error))
+                }
+            } else {
+                let error = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Request failed with status code: \(statusCode)"])
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
     
     func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
         
