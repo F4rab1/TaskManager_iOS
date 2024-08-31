@@ -23,6 +23,9 @@
 		D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FB2242C51475800886CE4 /* MainTabBarController.swift */; };
 		D30FB22A2C51475A00886CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30FB2292C51475A00886CE4 /* Assets.xcassets */; };
 		D30FB22D2C51475A00886CE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30FB22B2C51475A00886CE4 /* LaunchScreen.storyboard */; };
+		D34814252C830708000BCEE9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34814242C830708000BCEE9 /* AuthManager.swift */; };
+		D34814292C8309CA000BCEE9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34814282C8309CA000BCEE9 /* LoginView.swift */; };
+		D348142B2C830FAD000BCEE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348142A2C830FAD000BCEE9 /* LoginViewController.swift */; };
 		D359A6952C824D100035299D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359A6942C824D100035299D /* Token.swift */; };
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
@@ -58,6 +61,9 @@
 		D30FB2292C51475A00886CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30FB22C2C51475A00886CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30FB22E2C51475A00886CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34814242C830708000BCEE9 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		D34814282C8309CA000BCEE9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D348142A2C830FAD000BCEE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D359A6942C824D100035299D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -154,7 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				D3008D2C2C543412004C65C6 /* Service */,
+				D34814232C8306F4000BCEE9 /* AuthManager */,
 				D3008D292C542D4F004C65C6 /* Models */,
+				D34814222C83025A000BCEE9 /* Authentication Screens */,
 				D3008D252C540EFB004C65C6 /* Views */,
 				D3B487F82C5269A600CDC2D3 /* Controllers */,
 				D3B488022C526C9000CDC2D3 /* Helpers */,
@@ -165,6 +173,39 @@
 				D30FB22E2C51475A00886CE4 /* Info.plist */,
 			);
 			path = TaskManager_iOS;
+			sourceTree = "<group>";
+		};
+		D34814222C83025A000BCEE9 /* Authentication Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D34814262C83082F000BCEE9 /* Login */,
+			);
+			path = "Authentication Screens";
+			sourceTree = "<group>";
+		};
+		D34814232C8306F4000BCEE9 /* AuthManager */ = {
+			isa = PBXGroup;
+			children = (
+				D34814242C830708000BCEE9 /* AuthManager.swift */,
+			);
+			path = AuthManager;
+			sourceTree = "<group>";
+		};
+		D34814262C83082F000BCEE9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D348142A2C830FAD000BCEE9 /* LoginViewController.swift */,
+				D34814272C8309BA000BCEE9 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D34814272C8309BA000BCEE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D34814282C8309CA000BCEE9 /* LoginView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D3B2EE772C5AC96900940638 /* Notes */ = {
@@ -331,6 +372,7 @@
 			files = (
 				D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */,
 				D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */,
+				D34814252C830708000BCEE9 /* AuthManager.swift in Sources */,
 				D3BF261F2C7D1F2B00AD677F /* AddNoteController.swift in Sources */,
 				D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */,
 				D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */,
@@ -341,11 +383,13 @@
 				D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */,
 				D308E20B2C6930F400835862 /* Notes.swift in Sources */,
 				D3BF261D2C7D1B3700AD677F /* ShadowContainerView.swift in Sources */,
+				D348142B2C830FAD000BCEE9 /* LoginViewController.swift in Sources */,
 				D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */,
 				D3008D302C54359C004C65C6 /* Tasks.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
 				D359A6952C824D100035299D /* Token.swift in Sources */,
 				D3CB71082C77AACE00BF83B8 /* UILabel+Extensions.swift in Sources */,
+				D34814292C8309CA000BCEE9 /* LoginView.swift in Sources */,
 				D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */,
 				D3008D2E2C543537004C65C6 /* APIService.swift in Sources */,
 				D3CB71062C777A8400BF83B8 /* Category.swift in Sources */,
