@@ -29,7 +29,9 @@ class LoginViewModel: LoginProtocol {
                 case .success(let data):
                     let decoder = JSONDecoder()
                     if let tokenResponse = try? decoder.decode(TokenResponse.self, from: data) {
-                        print(tokenResponse)
+                        AuthManager.shared.accessToken = tokenResponse.access
+                        AuthManager.shared.refreshToken = tokenResponse.refresh
+                        
                         self?.isLoggedIn = true
                         self?.loginResult?(.success(data))
                     }
