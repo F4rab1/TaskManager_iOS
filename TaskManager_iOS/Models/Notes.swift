@@ -9,7 +9,7 @@ import Foundation
 
 struct Note: Decodable {
     let id: Int
-    let title: String
-    let text: String
+    var title: String
+    var text: String
     let created_at: String
 }

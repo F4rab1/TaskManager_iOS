@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NoteDetailController: UIViewController {
+class NoteDetailController: UIViewController, UITextViewDelegate {
     
     var note: Note? {
         didSet {
@@ -82,6 +82,8 @@ class NoteDetailController: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         editNoteButton.addTarget(self, action: #selector(editNote), for: .touchUpInside)
+        titleFieldNote.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        noteTextView.delegate = self
         
         view.addSubview(titleNoteLabel)
         view.addSubview(titleFieldNote)
@@ -90,8 +92,48 @@ class NoteDetailController: UIViewController {
         view.addSubview(editNoteButton)
     }
     
+    @objc func textDidChange() {
+        updateEditButtonState()
+    }
+    
+    func updateEditButtonState() {
+        if titleFieldNote.text != note?.title || noteTextView.text != note?.text {
+            editNoteButton.backgroundColor = UIColor(red: 23, green: 162, blue: 184)
+        } else {
+            editNoteButton.backgroundColor = UIColor(red: 249, green: 252, blue: 254)
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        updateEditButtonState()
+    }
+    
     @objc func editNote() {
+        guard let title = titleFieldNote.text,
+              let text = noteTextView.text,
+              title != note?.title || text != note?.text,
+              let token = AuthManager.shared.accessToken else {
+            return
+        }
         
+        let parameters: [String: Any] = [
+            "title": title,
+            "text": text
+        ]
+        
+        APIService.shared.putWithToken(endpoint: "notes/\(note!.id)/", parameters: parameters, token: token) { result in
+            switch result {
+            case .success(let data):
+                print("Note updated successfully: \(data)")
+                DispatchQueue.main.async {
+                    self.note?.title = title
+                    self.note?.text = text
+                    self.updateEditButtonState()
+                }
+            case .failure(let error):
+                print("Failed to update note: \(error)")
+            }
+        }
     }
     
     func setupConstraints() {
