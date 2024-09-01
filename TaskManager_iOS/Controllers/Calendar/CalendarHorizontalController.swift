@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CalendarHorizontalControllerDelegate: AnyObject {
-    func didFetchTasksByCompletionDate(_ tasks: Tasks)
+    func didFetchTasksByCompletionDate(_ tasks: Tasks, selectedDay: String)
 }
 
 class CalendarHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
@@ -74,7 +74,7 @@ class CalendarHorizontalController: HorizontalSnappingController, UICollectionVi
             }
             
             DispatchQueue.main.async {
-                self.delegate?.didFetchTasksByCompletionDate(res ?? Tasks(count: 0, next: nil, previous: nil, results: []))
+                self.delegate?.didFetchTasksByCompletionDate(res ?? Tasks(count: 0, next: nil, previous: nil, results: []), selectedDay: selectedDate)
             }
         }
     }

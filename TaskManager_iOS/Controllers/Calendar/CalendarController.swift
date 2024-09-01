@@ -11,6 +11,8 @@ import SnapKit
 class CalendarController: UIViewController {
     
     let calendarHorizontalController = CalendarHorizontalController()
+    private let refreshController = UIRefreshControl()
+    var selectedDate: String = ""
     
     let calendarImageView: UIImageView = {
         let iv = UIImageView()
@@ -43,6 +45,8 @@ class CalendarController: UIViewController {
         super.viewDidLoad()
         
         calendarHorizontalController.delegate = self
+        tableView.refreshControl = refreshController
+        refreshController.addTarget(self, action: #selector(refreshTasksData(_:)), for: .valueChanged)
         
         setupUI()
         setupConstraints()
@@ -69,6 +73,20 @@ class CalendarController: UIViewController {
             DispatchQueue.main.async {
                 self.tasksByCompletionDate = res
                 self.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func refreshTasksData(_ sender: Any) {
+        APIService.shared.fetchTasksByCompletionDate(completionDate: selectedDate) { res, err in
+            if let err = err {
+                print(err)
+            }
+            
+            DispatchQueue.main.async {
+                self.tasksByCompletionDate = res
+                self.tableView.reloadData()
+                self.refreshController.endRefreshing()
             }
         }
     }
@@ -136,9 +154,10 @@ class CalendarController: UIViewController {
 }
 
 extension CalendarController: CalendarHorizontalControllerDelegate {
-    func didFetchTasksByCompletionDate(_ tasks: Tasks) {
+    func didFetchTasksByCompletionDate(_ tasks: Tasks, selectedDay: String) {
         DispatchQueue.main.async {
             self.tasksByCompletionDate = tasks
+            self.selectedDate = selectedDay
             self.tableView.reloadData()
         }
     }
