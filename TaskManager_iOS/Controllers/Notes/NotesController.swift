@@ -125,6 +125,13 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
         return 130
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedNote = notes?[indexPath.row]
+        let detailController = NoteDetailController()
+        detailController.note = selectedNote
+        navigationController?.pushViewController(detailController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] (action, view, completionHandler) in
             self?.deleteNote(at: indexPath)

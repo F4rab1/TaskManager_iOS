@@ -28,6 +28,7 @@
 		D348142B2C830FAD000BCEE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348142A2C830FAD000BCEE9 /* LoginViewController.swift */; };
 		D348142D2C837688000BCEE9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348142C2C837688000BCEE9 /* LoginViewModel.swift */; };
 		D359A6952C824D100035299D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359A6942C824D100035299D /* Token.swift */; };
+		D39B67042C846ECB00DC0C6E /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */; };
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
 		D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		D348142A2C830FAD000BCEE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D348142C2C837688000BCEE9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D359A6942C824D100035299D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				D3B2EE782C5AC9A600940638 /* NotesController.swift */,
+				D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D3E8949F2C5B982C0068C523 /* UIStackView+Extensions.swift in Sources */,
 				D3008D222C540E3F004C65C6 /* HorizontalSnappingController.swift in Sources */,
 				D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */,
+				D39B67042C846ECB00DC0C6E /* NoteDetailController.swift in Sources */,
 				D308E20E2C693B7A00835862 /* NoteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
