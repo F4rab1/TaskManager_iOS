@@ -12,7 +12,21 @@ class CalendarController: UIViewController {
     
     let calendarHorizontalController = CalendarHorizontalController()
     private let refreshController = UIRefreshControl()
-    var selectedDate: String = ""
+    
+    let dateFormatter = DateFormatter()
+    var selectedDate: String
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        selectedDate = dateFormatter.string(from: Date())
+        
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     let calendarImageView: UIImageView = {
         let iv = UIImageView()
@@ -61,11 +75,7 @@ class CalendarController: UIViewController {
     }
     
     func fetchTodayTask() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = dateFormatter.string(from: Date())
-        
-        APIService.shared.fetchTasksByCompletionDate(completionDate: todayDate) { res, err in
+        APIService.shared.fetchTasksByCompletionDate(completionDate: selectedDate) { res, err in
             if let err = err {
                 print(err)
             }
