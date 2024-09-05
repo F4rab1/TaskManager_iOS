@@ -28,6 +28,7 @@
 		D348142B2C830FAD000BCEE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348142A2C830FAD000BCEE9 /* LoginViewController.swift */; };
 		D348142D2C837688000BCEE9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348142C2C837688000BCEE9 /* LoginViewModel.swift */; };
 		D359A6952C824D100035299D /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359A6942C824D100035299D /* Token.swift */; };
+		D38EB0F32C8A1F1800F72A3F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38EB0F22C8A1F1800F72A3F /* SignUpViewModel.swift */; };
 		D39B67042C846ECB00DC0C6E /* NoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */; };
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
@@ -68,6 +69,7 @@
 		D348142A2C830FAD000BCEE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D348142C2C837688000BCEE9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D359A6942C824D100035299D /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		D38EB0F22C8A1F1800F72A3F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailController.swift; sourceTree = "<group>"; };
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		D34814222C83025A000BCEE9 /* Authentication Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D38EB0F02C8A1ECD00F72A3F /* Sign Up */,
 				D34814262C83082F000BCEE9 /* Login */,
 			);
 			path = "Authentication Screens";
@@ -211,6 +214,22 @@
 				D34814282C8309CA000BCEE9 /* LoginView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D38EB0F02C8A1ECD00F72A3F /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				D38EB0F12C8A1EE000F72A3F /* ViewModels */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		D38EB0F12C8A1EE000F72A3F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D38EB0F22C8A1F1800F72A3F /* SignUpViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D3B2EE772C5AC96900940638 /* Notes */ = {
@@ -394,6 +413,7 @@
 				D3008D302C54359C004C65C6 /* Tasks.swift in Sources */,
 				D3008D2B2C542D63004C65C6 /* CalendarDay.swift in Sources */,
 				D359A6952C824D100035299D /* Token.swift in Sources */,
+				D38EB0F32C8A1F1800F72A3F /* SignUpViewModel.swift in Sources */,
 				D3CB71082C77AACE00BF83B8 /* UILabel+Extensions.swift in Sources */,
 				D34814292C8309CA000BCEE9 /* LoginView.swift in Sources */,
 				D348142D2C837688000BCEE9 /* LoginViewModel.swift in Sources */,
