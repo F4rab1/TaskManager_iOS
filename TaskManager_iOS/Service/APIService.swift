@@ -222,6 +222,48 @@ class APIService {
         task.resume()
     }
     
+    func delete(endpoint: String, token: String?, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: baseURL + endpoint) else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let token = token {
+            request.addValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])
+                completion(.failure(error))
+                return
+            }
+            
+            let statusCode = httpResponse.statusCode
+            if 200...299 ~= statusCode {
+                if let data = data {
+                    completion(.success(data))
+                } else {
+                    let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Empty response data"])
+                    completion(.failure(error))
+                }
+            } else {
+                let error = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Request failed with status code: \(statusCode)"])
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
     func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
         
         let urlString = baseURL + "tasks/"
