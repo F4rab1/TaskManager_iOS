@@ -1,3 +1,5 @@
+**TaskManager** is an iOS application built with UIKit that helps users manage their tasks and notes efficiently. Each task includes a completion date, category, and priority, allowing users to organize tasks by day, importance, and type. In addition to task management, the app enables users to take and save notes, making it a comprehensive tool for personal productivity.
+
 The backend API is https://github.com/F4rab1/TaskManager_backend
 
 <img width="264" alt="Screenshot 2024-08-31 at 23 58 08" src="https://github.com/user-attachments/assets/95f360f3-2746-49de-a350-80ff7d585783">
