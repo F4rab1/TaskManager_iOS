@@ -12,4 +12,10 @@ struct Note: Decodable {
     var title: String
     var text: String
     let created_at: String
+    var images: [NoteImage]
+}
+
+struct NoteImage: Decodable {
+    let id: Int
+    let image_link: String
 }

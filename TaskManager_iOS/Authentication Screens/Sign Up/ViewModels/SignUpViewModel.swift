@@ -26,7 +26,6 @@ class SignUpViewModel: SignUpProtocol {
         let parameters: [String: Any] = ["username": username, "password": password, "password2": password2]
         
         APIService.shared.post(endpoint: "customers", parameters: parameters) { [weak self] result in
-//
             
         }
     }

@@ -33,6 +33,8 @@
 		D3B2EE792C5AC9A600940638 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE782C5AC9A600940638 /* NotesController.swift */; };
 		D3B2EE7C2C5AC9D500940638 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */; };
 		D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */; };
+		D3B346342CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B346332CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift */; };
+		D3B346372CCD5709000DFD9F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D3B346362CCD5709000DFD9F /* SDWebImage */; };
 		D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */; };
 		D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FD2C526B2A00CDC2D3 /* AddController.swift */; };
 		D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488002C526B4300CDC2D3 /* CalendarController.swift */; };
@@ -74,6 +76,7 @@
 		D3B2EE782C5AC9A600940638 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		D3B2EE7B2C5AC9D500940638 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D3B2EE7E2C5AD82E00940638 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		D3B346332CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3B487FA2C5269FA00CDC2D3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		D3B487FD2C526B2A00CDC2D3 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		D3B488002C526B4300CDC2D3 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B346372CCD5709000DFD9F /* SDWebImage in Frameworks */,
 				D3008D202C540DE1004C65C6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				D308E20D2C693B7A00835862 /* NoteTableViewCell.swift */,
+				D3B346332CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 			name = TaskManager_iOS;
 			packageProductDependencies = (
 				D3008D1F2C540DE1004C65C6 /* SnapKit */,
+				D3B346362CCD5709000DFD9F /* SDWebImage */,
 			);
 			productName = TaskManager_iOS;
 			productReference = D30FB21D2C51475800886CE4 /* TaskManager_iOS.app */;
@@ -368,6 +374,7 @@
 			mainGroup = D30FB2142C51475800886CE4;
 			packageReferences = (
 				D3008D1E2C540DE1004C65C6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D3B346352CCD5709000DFD9F /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = D30FB21E2C51475800886CE4 /* Products */;
 			projectDirPath = "";
@@ -401,6 +408,7 @@
 				D3BF261F2C7D1F2B00AD677F /* AddNoteController.swift in Sources */,
 				D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */,
 				D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */,
+				D3B346342CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift in Sources */,
 				D3BF261B2C7D004600AD677F /* APIServiceNotes.swift in Sources */,
 				D3008D1D2C540D7F004C65C6 /* CalendarHorizontalController.swift in Sources */,
 				D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */,
@@ -648,6 +656,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		D3B346352CCD5709000DFD9F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -655,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3008D1E2C540DE1004C65C6 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		D3B346362CCD5709000DFD9F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3B346352CCD5709000DFD9F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
