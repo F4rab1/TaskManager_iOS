@@ -15,6 +15,8 @@ class NotePhotoCollectionViewCell: UICollectionViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.cornerRadius = 8
+        iv.layer.borderWidth = 1
+        iv.layer.borderColor = UIColor.gray.cgColor
         iv.backgroundColor = .black
         
         return iv

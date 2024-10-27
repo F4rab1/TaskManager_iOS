@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class NoteDetailController: UIViewController, UITextViewDelegate {
     
@@ -59,6 +60,18 @@ class NoteDetailController: UIViewController, UITextViewDelegate {
         return tv
     }()
     
+    let photoCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        layout.itemSize = CGSize(width: 100, height: 100)
+
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        return cv
+    }()
+    
     let editNoteButton: UIButton = {
         let button = UIButton()
         button.setTitle("Edit Note", for: .normal)
@@ -89,7 +102,12 @@ class NoteDetailController: UIViewController, UITextViewDelegate {
         view.addSubview(titleFieldNote)
         view.addSubview(textNoteLabel)
         view.addSubview(noteTextView)
+        view.addSubview(photoCollectionView)
         view.addSubview(editNoteButton)
+        
+        photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
+        photoCollectionView.register(NotePhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
     }
     
     @objc func textDidChange() {
@@ -160,12 +178,39 @@ class NoteDetailController: UIViewController, UITextViewDelegate {
             make.height.equalTo(170)
         }
         
-        editNoteButton.snp.makeConstraints { make in
+        photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(noteTextView.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(100)
+        }
+        
+        editNoteButton.snp.makeConstraints { make in
+            make.top.equalTo(photoCollectionView.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
         
     }
     
+}
+
+extension NoteDetailController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return note?.images.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! NotePhotoCollectionViewCell
+        
+        if let url = URL(string: note?.images[indexPath.item].image_link ?? "") {
+            cell.imageView.sd_setImage(with: url)
+        }
+       
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
 }
