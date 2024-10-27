@@ -206,11 +206,20 @@ extension NoteDetailController: UICollectionViewDataSource, UICollectionViewDele
         if let url = URL(string: note?.images[indexPath.item].image_link ?? "") {
             cell.imageView.sd_setImage(with: url)
         }
-       
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let imageURLString = note?.images[indexPath.item].image_link,
+              let imageURL = URL(string: imageURLString) else { return }
+        
+        let fullscreenVC = FullscreenImageViewController()
+        fullscreenVC.imageURL = imageURL
+        navigationController?.pushViewController(fullscreenVC, animated: true)
     }
 }

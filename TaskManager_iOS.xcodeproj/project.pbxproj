@@ -39,6 +39,7 @@
 		D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B487FD2C526B2A00CDC2D3 /* AddController.swift */; };
 		D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488002C526B4300CDC2D3 /* CalendarController.swift */; };
 		D3B488042C526CBA00CDC2D3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */; };
+		D3BAF0032CCE544B00AC215E /* FullscreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAF0022CCE544B00AC215E /* FullscreenImageViewController.swift */; };
 		D3BF261B2C7D004600AD677F /* APIServiceNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF261A2C7D004600AD677F /* APIServiceNotes.swift */; };
 		D3BF261D2C7D1B3700AD677F /* ShadowContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF261C2C7D1B3700AD677F /* ShadowContainerView.swift */; };
 		D3BF261F2C7D1F2B00AD677F /* AddNoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BF261E2C7D1F2B00AD677F /* AddNoteController.swift */; };
@@ -81,6 +82,7 @@
 		D3B487FD2C526B2A00CDC2D3 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		D3B488002C526B4300CDC2D3 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		D3BAF0022CCE544B00AC215E /* FullscreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageViewController.swift; sourceTree = "<group>"; };
 		D3BF261A2C7D004600AD677F /* APIServiceNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceNotes.swift; sourceTree = "<group>"; };
 		D3BF261C2C7D1B3700AD677F /* ShadowContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowContainerView.swift; sourceTree = "<group>"; };
 		D3BF261E2C7D1F2B00AD677F /* AddNoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				D3B2EE782C5AC9A600940638 /* NotesController.swift */,
 				D39B67032C846ECB00DC0C6E /* NoteDetailController.swift */,
+				D3BAF0022CCE544B00AC215E /* FullscreenImageViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				D3B487FB2C5269FA00CDC2D3 /* HomeController.swift in Sources */,
 				D3008D242C540E5E004C65C6 /* BetterSnappingLayout.swift in Sources */,
 				D34814252C830708000BCEE9 /* AuthManager.swift in Sources */,
+				D3BAF0032CCE544B00AC215E /* FullscreenImageViewController.swift in Sources */,
 				D3BF261F2C7D1F2B00AD677F /* AddNoteController.swift in Sources */,
 				D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */,
 				D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */,
