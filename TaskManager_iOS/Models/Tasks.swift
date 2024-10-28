@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Tasks: Decodable {
-    let count: Int
-    let next: String?
-    let previous: String?
-    var results: [Task]
-}
+// this struct for when there is pagination
+//struct Tasks: Decodable {
+//    let count: Int
+//    let next: String?
+//    let previous: String?
+//    var results: [Task]
+//}
 
 struct Task: Decodable {
     let id: Int
@@ -20,7 +21,7 @@ struct Task: Decodable {
     let description: String
     let stage: String
     let priority: Int
-    let category: Int
+    let category: String
     let created_at: String
     let completion_date: String
 }

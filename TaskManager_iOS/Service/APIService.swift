@@ -264,7 +264,7 @@ class APIService {
         task.resume()
     }
     
-    func fetchTasks(completion: @escaping (Tasks?, Error?) -> ()) {
+    func fetchTasks(completion: @escaping ([Task]?, Error?) -> ()) {
         
         let urlString = baseURL + "tasks/"
         guard let url = URL(string: urlString) else { return }
@@ -284,7 +284,7 @@ class APIService {
             }
             
             do {
-                let objects = try JSONDecoder().decode(Tasks.self, from: data!)
+                let objects = try JSONDecoder().decode([Task].self, from: data!)
                 completion(objects, nil)
             } catch {
                 completion(nil, error)
@@ -294,7 +294,7 @@ class APIService {
         
     }
     
-    func fetchTasksByCompletionDate(completionDate: String, completion: @escaping (Tasks?, Error?) -> ()) {
+    func fetchTasksByCompletionDate(completionDate: String, completion: @escaping ([Task]?, Error?) -> ()) {
         
         let urlString = baseURL + "tasks/?completion_date=" + completionDate
         guard let url = URL(string: urlString) else { return }
@@ -314,7 +314,7 @@ class APIService {
             }
             
             do {
-                let objects = try JSONDecoder().decode(Tasks.self, from: data!)
+                let objects = try JSONDecoder().decode([Task].self, from: data!)
                 completion(objects, nil)
             } catch {
                 completion(nil, error)

@@ -52,7 +52,7 @@ class CalendarController: UIViewController {
         return tv
     }()
     
-    private var tasksByCompletionDate: Tasks?
+    private var tasksByCompletionDate: [Task]?
     var categoryDict: [String: String] = UserDefaults.standard.dictionary(forKey: "categories") as? [String: String] ?? [:]
     
     override func viewDidLoad() {
@@ -164,7 +164,7 @@ class CalendarController: UIViewController {
 }
 
 extension CalendarController: CalendarHorizontalControllerDelegate {
-    func didFetchTasksByCompletionDate(_ tasks: Tasks, selectedDay: String) {
+    func didFetchTasksByCompletionDate(_ tasks: [Task], selectedDay: String) {
         DispatchQueue.main.async {
             self.tasksByCompletionDate = tasks
             self.selectedDate = selectedDay
@@ -176,15 +176,14 @@ extension CalendarController: CalendarHorizontalControllerDelegate {
 extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasksByCompletionDate?.results.count ?? 0
+        return tasksByCompletionDate?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
         
-        let task = tasksByCompletionDate?.results[indexPath.row]
-        let categoryName = self.categoryDict[String(task!.category)] ?? "No Category"
-        cell.categoryLabel.text = categoryName
+        let task = tasksByCompletionDate?[indexPath.row]
+        cell.categoryLabel.text = task?.category
         cell.titleLabel.text = task?.title
         if task?.stage == "completed" {
             cell.isCompleted = true
@@ -207,7 +206,7 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskDetailController = TaskDetailController()
-        taskDetailController.task = tasksByCompletionDate?.results[indexPath.row]
+        taskDetailController.task = tasksByCompletionDate?[indexPath.row]
         navigationController?.pushViewController(taskDetailController, animated: true)
     }
     
@@ -228,9 +227,9 @@ extension CalendarController: UITableViewDataSource, UITableViewDelegate {
     }
     
     private func deleteTask(at indexPath: IndexPath) {
-        guard let task = tasksByCompletionDate?.results[indexPath.row] else { return }
+        guard let task = tasksByCompletionDate?[indexPath.row] else { return }
         
-        tasksByCompletionDate?.results.remove(at: indexPath.row)
+        tasksByCompletionDate?.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
         APIService.shared.deleteTask(taskId: task.id) { error in

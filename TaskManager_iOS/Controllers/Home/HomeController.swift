@@ -9,7 +9,7 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    private var tasks: Tasks?
+    private var tasks: [Task]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
