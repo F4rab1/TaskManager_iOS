@@ -4,7 +4,6 @@
 //
 //  Created by Фараби Иса on 27.10.2024.
 //
-
 import UIKit
 import SnapKit
 
@@ -27,6 +26,8 @@ class FullscreenImageViewController: UIViewController {
         return iv
     }()
     
+    private var initialTransform: CGAffineTransform = .identity
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,5 +38,16 @@ class FullscreenImageViewController: UIViewController {
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        imageView.addGestureRecognizer(pinchGesture)
+    }
+    
+    @objc private func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
+        guard let view = gesture.view else { return }
+        
+        view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+        
+        gesture.scale = 1
     }
 }
