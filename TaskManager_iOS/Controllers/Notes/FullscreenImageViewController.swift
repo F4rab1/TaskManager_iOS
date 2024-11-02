@@ -41,13 +41,19 @@ class FullscreenImageViewController: UIViewController {
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
         imageView.addGestureRecognizer(pinchGesture)
+        initialTransform = imageView.transform
     }
     
     @objc private func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
         guard let view = gesture.view else { return }
         
-        view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-        
-        gesture.scale = 1
+        if gesture.state == .changed {
+            view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+            gesture.scale = 1
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.3) {
+                view.transform = self.initialTransform
+            }
+        }
     }
 }

@@ -90,6 +90,7 @@ class NoteTableViewCell: UITableViewCell {
         photoCollectionView.dataSource = self
         photoCollectionView.delegate = self
         photoCollectionView.register(NotePhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCell")
+        photoCollectionView.register(PlusButtonCollectionViewCell.self, forCellWithReuseIdentifier: "PlusCell")
     }
     
     func setupConstraints() {
@@ -124,17 +125,38 @@ class NoteTableViewCell: UITableViewCell {
 extension NoteTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return note?.images.count ?? 0
+        return (note?.images.count ?? 0) + 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! NotePhotoCollectionViewCell
-        
-        if let url = URL(string: note?.images[indexPath.item].image_link ?? "") {
-            cell.imageView.sd_setImage(with: url)
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlusCell", for: indexPath) as! PlusButtonCollectionViewCell
+            cell.plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! NotePhotoCollectionViewCell
+            
+            if let url = URL(string: note?.images[indexPath.item - 1].image_link ?? "") {
+                cell.imageView.sd_setImage(with: url)
+            }
+            
+            return cell
         }
-       
-        return cell
+    }
+    
+    @objc func didTapPlusButton() {
+        print("hello")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let imageURLString = note?.images[indexPath.item - 1].image_link,
+              let imageURL = URL(string: imageURLString) else { return }
+        
+        let fullscreenVC = FullscreenImageViewController()
+        fullscreenVC.imageURL = imageURL
+        if let viewController = self.findViewController() {
+            viewController.navigationController?.pushViewController(fullscreenVC, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -47,6 +47,8 @@
 		D3CB71082C77AACE00BF83B8 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB71072C77AACE00BF83B8 /* UILabel+Extensions.swift */; };
 		D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E8949C2C5B7FCB0068C523 /* TaskDetailController.swift */; };
 		D3E8949F2C5B982C0068C523 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E8949E2C5B982C0068C523 /* UIStackView+Extensions.swift */; };
+		D3F4A54F2CD684CD0006A98C /* PlusButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4A54E2CD684CD0006A98C /* PlusButtonCollectionViewCell.swift */; };
+		D3F4A5512CD688660006A98C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4A5502CD688660006A98C /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +92,8 @@
 		D3CB71072C77AACE00BF83B8 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		D3E8949C2C5B7FCB0068C523 /* TaskDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailController.swift; sourceTree = "<group>"; };
 		D3E8949E2C5B982C0068C523 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		D3F4A54E2CD684CD0006A98C /* PlusButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3F4A5502CD688660006A98C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 			children = (
 				D308E20D2C693B7A00835862 /* NoteTableViewCell.swift */,
 				D3B346332CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift */,
+				D3F4A54E2CD684CD0006A98C /* PlusButtonCollectionViewCell.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				D3B488032C526CBA00CDC2D3 /* UIColor+Extensions.swift */,
 				D3E8949E2C5B982C0068C523 /* UIStackView+Extensions.swift */,
 				D3CB71072C77AACE00BF83B8 /* UILabel+Extensions.swift */,
+				D3F4A5502CD688660006A98C /* UIView+Extensions.swift */,
 				D3BF261C2C7D1B3700AD677F /* ShadowContainerView.swift */,
 				D3008D1A2C5402AB004C65C6 /* BaseListController.swift */,
 				D3008D212C540E3F004C65C6 /* HorizontalSnappingController.swift */,
@@ -411,11 +417,13 @@
 				D3BAF0032CCE544B00AC215E /* FullscreenImageViewController.swift in Sources */,
 				D3BF261F2C7D1F2B00AD677F /* AddNoteController.swift in Sources */,
 				D3E8949D2C5B7FCB0068C523 /* TaskDetailController.swift in Sources */,
+				D3F4A54F2CD684CD0006A98C /* PlusButtonCollectionViewCell.swift in Sources */,
 				D3B2EE7F2C5AD82E00940638 /* TaskTableViewCell.swift in Sources */,
 				D3B346342CCD50B0000DFD9F /* NotePhotoCollectionViewCell.swift in Sources */,
 				D3BF261B2C7D004600AD677F /* APIServiceNotes.swift in Sources */,
 				D3008D1D2C540D7F004C65C6 /* CalendarHorizontalController.swift in Sources */,
 				D3B488012C526B4300CDC2D3 /* CalendarController.swift in Sources */,
+				D3F4A5512CD688660006A98C /* UIView+Extensions.swift in Sources */,
 				D3B487FE2C526B2A00CDC2D3 /* AddController.swift in Sources */,
 				D30FB2252C51475800886CE4 /* MainTabBarController.swift in Sources */,
 				D308E20B2C6930F400835862 /* Notes.swift in Sources */,
