@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NoteTableViewCell: UITableViewCell {
+class NoteTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var note: Note? {
         didSet {
@@ -16,6 +16,9 @@ class NoteTableViewCell: UITableViewCell {
             textOfNoteLabel.text = note?.text
         }
     }
+    
+    var selectedImage: UIImage?
+    weak var collectionView: UICollectionView?
     
     private let shadowContainerView: UIView = {
         let view = UIView()
@@ -136,7 +139,9 @@ extension NoteTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! NotePhotoCollectionViewCell
             
-            if let url = URL(string: note?.images[indexPath.item - 1].image_link ?? "") {
+            if let image = selectedImage, indexPath.item == 1 {
+                cell.imageView.image = image
+            } else if let url = URL(string: note?.images[indexPath.item - 1].image_link ?? "") {
                 cell.imageView.sd_setImage(with: url)
             }
             
@@ -145,7 +150,30 @@ extension NoteTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     @objc func didTapPlusButton() {
-        print("hello")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        if let viewController = findViewController() {
+            viewController.present(picker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[.originalImage] as? UIImage {
+            selectedImage = image
+            
+            guard let selectedImage = selectedImage else { return }
+            let noteID = (note?.id)!
+            
+            APIServiceNotes.shared.uploadImage(noteID: noteID, image: selectedImage) { (success, error) in
+                if let error = error {
+                    print("Error uploading image:", error)
+                } else {
+                    print("Image uploaded successfully")
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
