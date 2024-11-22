@@ -64,6 +64,15 @@ class AddNoteController: UIViewController, UITextViewDelegate {
         return tv
     }()
     
+    let addPhotoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You may add photos later from the notes page!"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        
+        return label
+    }()
+    
     let addNoteButton: UIButton = {
         let button = UIButton()
         button.setTitle("Add Note", for: .normal)
@@ -93,6 +102,7 @@ class AddNoteController: UIViewController, UITextViewDelegate {
         view.addSubview(titleFieldNote)
         view.addSubview(textNoteLabel)
         view.addSubview(noteTextView)
+        view.addSubview(addPhotoLabel)
         view.addSubview(addNoteButton)
     }
     
@@ -169,8 +179,13 @@ class AddNoteController: UIViewController, UITextViewDelegate {
             make.height.equalTo(170)
         }
         
-        addNoteButton.snp.makeConstraints { make in
+        addPhotoLabel.snp.makeConstraints { make in
             make.top.equalTo(noteTextView.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        addNoteButton.snp.makeConstraints { make in
+            make.top.equalTo(addPhotoLabel.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
