@@ -114,6 +114,7 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
         cell.note = notes?[indexPath.row]
+        cell.delegate = self
         
         return cell
     }
@@ -156,6 +157,16 @@ extension NotesController: UITableViewDataSource, UITableViewDelegate {
                 print("Note successfully deleted from backend")
             }
         }
+    }
+}
+
+extension NotesController: NoteTableViewCellDelegate {
+    func didAddImage(toNote note: Note) {
+        if let index = notes?.firstIndex(where: { $0.id == note.id }) {
+            notes?[index] = note
+        }
+        
+        tableView.reloadData()
     }
 }
 

@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol NoteTableViewCellDelegate: AnyObject {
+    func didAddImage(toNote note: Note)
+}
+
 class NoteTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    weak var delegate: NoteTableViewCellDelegate?
     
     var note: Note? {
         didSet {
@@ -67,6 +73,7 @@ class NoteTableViewCell: UITableViewCell, UIImagePickerControllerDelegate, UINav
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
         return cv
     }()
     
@@ -171,6 +178,12 @@ extension NoteTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
                     print("Error uploading image:", error)
                 } else {
                     print("Image uploaded successfully")
+                    
+                    DispatchQueue.main.async {
+                        if let updatedNote = self.note {
+                            self.delegate?.didAddImage(toNote: updatedNote)
+                        }
+                    }
                 }
             }
         }
