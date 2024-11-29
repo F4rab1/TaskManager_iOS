@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success:
                 DispatchQueue.main.async {
-                    let vc = UINavigationController(rootViewController: BaseTabBarController())
+                    let vc = BaseTabBarController()
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true, completion: nil)
                 }

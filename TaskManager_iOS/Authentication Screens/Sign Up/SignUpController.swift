@@ -39,28 +39,31 @@ class SignUpController: UIViewController {
     
     func addTargets() {
         contentView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        contentView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
     @objc func signUpButtonTapped() {
         print("signUp")
-//        guard let username = contentView.usernameField.text, let password = contentView.passwordField.text else {
-//            return
-//        }
-//
-//        viewModel.login(username: username, password: password)
-//
-//        viewModel.loginResult = { [weak self] result in
-//            switch result {
-//            case .success:
-//                DispatchQueue.main.async {
-//                    let vc = UINavigationController(rootViewController: BaseTabBarController())
-//                    vc.modalPresentationStyle = .fullScreen
-//                    self?.present(vc, animated: true, completion: nil)
-//                }
-//            case .failure(let error):
-//                print("Login failed with error: \(error)")
-//            }
-//        }
+        guard let username = contentView.usernameField.text, let password = contentView.passwordField.text, let email = contentView.emailField.text, let first_name = contentView.firstNameField.text, let last_name = contentView.lastNameField.text else {
+            return
+        }
+
+        viewModel.register(username: username, password: password, email: email, first_name: first_name, last_name: last_name)
+
+        viewModel.registerResult = { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            case .failure(let error):
+                print("Login failed with error: \(error)")
+            }
+        }
+    }
+    
+    @objc func loginButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
 }
