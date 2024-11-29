@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
     
     func addTargets() {
         contentView.loginButton.addTarget(self, action: #selector(loginButton), for: .touchUpInside)
+        contentView.signupButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
     
     @objc func loginButton() {
@@ -61,6 +62,11 @@ class LoginViewController: UIViewController {
                 print("Login failed with error: \(error)")
             }
         }
+    }
+
+    @objc func signUpButtonTapped() {
+        let signUpController = SignUpController(viewModel: SignUpViewModel())
+        navigationController?.pushViewController(signUpController, animated: true)
     }
     
 }

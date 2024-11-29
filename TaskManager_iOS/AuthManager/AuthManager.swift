@@ -50,6 +50,7 @@ class AuthManager {
     
     private func clearTokens() {
         UserDefaults.standard.removeObject(forKey: accessTokenKey)
+        UserDefaults.standard.removeObject(forKey: refreshTokenKey)
         UserDefaults.standard.removeObject(forKey: tokenExpirationDateKey)
     }
     
