@@ -74,11 +74,40 @@ class AddController: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
+        endDateButton.addTarget(self, action: #selector(endDateButtonTapped), for: .touchUpInside)
+        
         view.addSubview(titleLabel)
         view.addSubview(startDateLabel)
         view.addSubview(endDateLabel)
         view.addSubview(startDateButton)
         view.addSubview(endDateButton)
+    }
+    
+    @objc func endDateButtonTapped() {
+        let alertController = UIAlertController(title: "Select End Date", message: "\n\n\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.frame = CGRect(x: 0, y: 40, width: alertController.view.bounds.width - 120, height: 200)
+        datePicker.locale = Locale(identifier: "en_US_POSIX")
+        
+        alertController.view.addSubview(datePicker)
+        
+        let selectAction = UIAlertAction(title: "Select", style: .default) { _ in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM-dd-yyyy"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            let selectedDate = dateFormatter.string(from: datePicker.date)
+            self.endDateButton.setTitle(selectedDate, for: .normal)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(selectAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func setupConstraints() {
