@@ -10,6 +10,7 @@ import UIKit
 class TasksListController: UIViewController {
     
     var tasks: [Task]?
+    private let refreshController = UIRefreshControl()
     
     let tableView: UITableView = {
         let tv = UITableView()
@@ -25,6 +26,16 @@ class TasksListController: UIViewController {
         title = "Home Page"
         view.backgroundColor = .white
         
+        tableView.refreshControl = refreshController
+        refreshController.addTarget(self, action: #selector(refreshTasksData(_:)), for: .valueChanged)
+        
+        APIService.shared.fetchTasks { res, err in
+            DispatchQueue.main.async {
+                self.tasks = res
+                self.tableView.reloadData()
+            }
+        }
+        
         setupUI()
         setupConstraints()
         setupTableView()
@@ -35,16 +46,26 @@ class TasksListController: UIViewController {
         view.addSubview(tableView)
     }
     
-    func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-    }
-    
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskCell")
+    }
+    
+    @objc func refreshTasksData(_ sender: Any) {
+        APIService.shared.fetchTasks { res, err in
+            DispatchQueue.main.async {
+                self.tasks = res
+                self.tableView.reloadData()
+                self.refreshController.endRefreshing()
+            }
+        }
+    }
+    
+    func setupConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
 }

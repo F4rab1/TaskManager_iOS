@@ -9,8 +9,6 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    private var tasks: [Task]?
-    
     let allTaskButton: UIButton = {
         let button = UIButton()
         button.setTitle("All Tasks", for: .normal)
@@ -29,11 +27,6 @@ class HomeController: UIViewController {
         
         setupUI()
         setupConstraints()
-        
-        APIService.shared.fetchTasks { res, err in
-            self.tasks = res
-        }
-        
     }
     
     func setupUI() {
@@ -44,7 +37,6 @@ class HomeController: UIViewController {
     
     @objc func allTaskButtonhandle() {
         let tasksController = TasksListController()
-        tasksController.tasks = self.tasks
         navigationController?.pushViewController(tasksController, animated: true)
     }
     
