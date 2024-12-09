@@ -122,6 +122,7 @@ class AddController: UIViewController {
         picker.delegate = self
         picker.dataSource = self
         picker.backgroundColor = .white
+        picker.layer.cornerRadius = 10
         
         return picker
     }()
@@ -145,6 +146,24 @@ class AddController: UIViewController {
         button.layer.cornerRadius = 10
         
         return button
+    }()
+    
+    let priorityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Priority:"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        return label
+    }()
+
+    let prioritySegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Low", "Medium", "High"])
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.layer.borderColor = UIColor(red: 23, green: 162, blue: 184).cgColor
+        segmentedControl.layer.borderWidth = 0.5
+        segmentedControl.layer.cornerRadius = 10
+        segmentedControl.backgroundColor = .white
+        return segmentedControl
     }()
     
     override func viewDidLoad() {
@@ -186,6 +205,9 @@ class AddController: UIViewController {
         view.addSubview(taskTextView)
         view.addSubview(categoryLabel)
         view.addSubview(categoryButton)
+        view.addSubview(priorityLabel)
+        view.addSubview(prioritySegmentedControl)
+
     }
     
     @objc func endDateButtonTapped() {
@@ -272,7 +294,7 @@ class AddController: UIViewController {
         }
         
         taskNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(startDateButton.snp.bottom).offset(20)
+            make.top.equalTo(startDateButton.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(20)
         }
         
@@ -283,7 +305,7 @@ class AddController: UIViewController {
         }
         
         textTaskLabel.snp.makeConstraints { make in
-            make.top.equalTo(taskNameTextField.snp.bottom).offset(20)
+            make.top.equalTo(taskNameTextField.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(20)
         }
         
@@ -294,12 +316,23 @@ class AddController: UIViewController {
         }
         
         categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(taskTextView.snp.bottom).offset(20)
+            make.top.equalTo(taskTextView.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(20)
         }
         
         categoryButton.snp.makeConstraints { make in
             make.top.equalTo(categoryLabel.snp.bottom).offset(7)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+        }
+        
+        priorityLabel.snp.makeConstraints { make in
+            make.top.equalTo(categoryButton.snp.bottom).offset(10)
+            make.leading.equalToSuperview().inset(20)
+        }
+
+        prioritySegmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(priorityLabel.snp.bottom).offset(7)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
