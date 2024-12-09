@@ -295,10 +295,14 @@ class AddController: UIViewController {
             "isFlagged": false
         ]
         
-        APIService.shared.postWithToken(endpoint: "tasks/", parameters: parameters) { result in
+        APIService.shared.postWithToken(endpoint: "tasks/", parameters: parameters) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 print("Task posted successfully: \(data)")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             case .failure(let error):
                 print("Failed to post task: \(error)")
             }
