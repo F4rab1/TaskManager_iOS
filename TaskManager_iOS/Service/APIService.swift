@@ -136,13 +136,15 @@ class APIService {
         task.resume()
     }
     
-    func postWithToken(endpoint: String, parameters: [String: Any], token: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func postWithToken(endpoint: String, parameters: [String: Any], completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: baseURL + endpoint) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.addValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        if let token = accessToken {
+            request.setValue("JWT \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
