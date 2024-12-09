@@ -51,7 +51,7 @@ class AddController: UIViewController {
         
         return button
     }()
-
+    
     let endDateLabel: UILabel = {
         let label = UILabel()
         label.text = "End Date:"
@@ -60,7 +60,7 @@ class AddController: UIViewController {
         
         return label
     }()
-
+    
     let endDateButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("2030-01-01", for: .normal)
@@ -126,7 +126,7 @@ class AddController: UIViewController {
         
         return picker
     }()
-
+    
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Category:"
@@ -135,7 +135,7 @@ class AddController: UIViewController {
         
         return label
     }()
-
+    
     let categoryButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Select Category", for: .normal)
@@ -153,9 +153,10 @@ class AddController: UIViewController {
         label.text = "Priority:"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor(red: 23, green: 162, blue: 184)
+        
         return label
     }()
-
+    
     let prioritySegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Low", "Medium", "High"])
         segmentedControl.selectedSegmentIndex = 0
@@ -163,7 +164,20 @@ class AddController: UIViewController {
         segmentedControl.layer.borderWidth = 0.5
         segmentedControl.layer.cornerRadius = 10
         segmentedControl.backgroundColor = .white
+        
         return segmentedControl
+    }()
+    
+    let postTaskButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Post Task", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 23, green: 162, blue: 184)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(postTaskButtonTapped), for: .touchUpInside)
+        
+        return button
     }()
     
     override func viewDidLoad() {
@@ -207,7 +221,8 @@ class AddController: UIViewController {
         view.addSubview(categoryButton)
         view.addSubview(priorityLabel)
         view.addSubview(prioritySegmentedControl)
-
+        view.addSubview(postTaskButton)
+        
     }
     
     @objc func endDateButtonTapped() {
@@ -261,6 +276,33 @@ class AddController: UIViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func postTaskButtonTapped() {
+        guard let taskName = taskNameTextField.text, !taskName.isEmpty else {
+            print("Task name is required")
+            return
+        }
+        
+        let taskText = taskTextView.text == "Enter text of the Task here" ? "" : taskTextView.text
+        let priority = prioritySegmentedControl.selectedSegmentIndex
+        let parameters: [String: Any] = [
+            "title": taskName,
+            "description": taskText ?? "",
+            "priority": priority,
+            "category": selectedCategoryID ?? 0,
+            "completion_date": endDateButton.title(for: .normal) ?? "",
+            "isFlagged": false
+        ]
+        
+        APIService.shared.postWithToken(endpoint: "tasks/", parameters: parameters) { result in
+            switch result {
+            case .success(let data):
+                print("Task posted successfully: \(data)")
+            case .failure(let error):
+                print("Failed to post task: \(error)")
+            }
+        }
     }
     
     func setupConstraints() {
@@ -330,9 +372,15 @@ class AddController: UIViewController {
             make.top.equalTo(categoryButton.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(20)
         }
-
+        
         prioritySegmentedControl.snp.makeConstraints { make in
             make.top.equalTo(priorityLabel.snp.bottom).offset(7)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+        }
+        
+        postTaskButton.snp.makeConstraints { make in
+            make.top.equalTo(prioritySegmentedControl.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
@@ -345,11 +393,11 @@ extension AddController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categories[row].title
     }
