@@ -6,7 +6,7 @@ The backend API is https://github.com/F4rab1/TaskManager_backend
 <img width="264" alt="Screenshot 2024-12-10 at 21 39 20" src="https://github.com/user-attachments/assets/b715625d-1a76-46a8-afdb-c1156c16d6a8">
 <img width="264" alt="Screenshot 2024-08-30 at 23 46 35" src="https://github.com/user-attachments/assets/ac32a35b-417e-4929-9532-971ab0abec46">
 <img width="265" alt="Screenshot 2024-08-21 at 23 58 00" src="https://github.com/user-attachments/assets/64553354-f3e7-4e14-ba22-fca37f1d3e70">
-<img width="263" alt="Screenshot 2024-08-23 at 23 27 06" src="https://github.com/user-attachments/assets/bdad98f9-32e1-457e-92ca-88471d8528e1">
+<img width="266" alt="Screenshot 2024-12-11 at 22 29 47" src="https://github.com/user-attachments/assets/75ce7b68-dd85-43ee-8cd2-56c4f4a78344" />
 <img width="265" alt="Screenshot 2024-11-03 at 22 50 33" src="https://github.com/user-attachments/assets/462f2442-7488-4287-8d67-72108394432b">
 <img width="266" alt="Screenshot 2024-11-03 at 22 51 17" src="https://github.com/user-attachments/assets/b5a7690a-f088-4ade-8bc3-99383f93d1c5">
 <img width="265" alt="Screenshot 2024-09-01 at 17 54 43" src="https://github.com/user-attachments/assets/078c945d-654c-4913-91ba-f5152590e0d2">
